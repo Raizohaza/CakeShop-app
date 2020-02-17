@@ -75,6 +75,7 @@ namespace CakeShop_app
             var bills = db.Bills.ToList();
 
             var currentBill = bills[bills.Count-1];
+            Bill_item.Totality = Bill_item.Quantity * Bill_item.Cake.Price;
 
             var Dup_bill = from bill in db.BillDetails
                         where bill.CakeID == Bill_item.CakeID && bill.IDBill == currentBill.ID

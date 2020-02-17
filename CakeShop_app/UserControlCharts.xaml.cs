@@ -53,15 +53,16 @@ namespace CakeShop_app
                 }
 
             }
-            
-            var columnChart = new SeriesCollection
+
+            var columnChart = new SeriesCollection();
+            for (int i = 0; i < 12; i++)
             {
-                new ColumnSeries
-                {
-                    Title = "2015",
-                    Values = new ChartValues<double> { 10, 50, 39, 50 }
-                }
-            };
+                var data = new ColumnSeries() { Title = $"Tháng {i + 1}", Values = new ChartValues<int> { MonthRevenue[i] } };
+                columnChart.Add(data);
+                //columnChart.Add(               );
+            }
+            
+           CartesianChart.Series = columnChart;
         }
 
         private void CartesianChart_DataClick(object sender, LiveCharts.ChartPoint chartPoint)
