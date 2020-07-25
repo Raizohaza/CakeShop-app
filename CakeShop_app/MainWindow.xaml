@@ -44,7 +44,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0" x:Name="GridMenu" Width="70" HorizontalAlignment="Left" Background="MediumPurple">
+        <Grid Grid.Column="0" x:Name="GridMenu" Width="70" HorizontalAlignment="Left" Background="Orange">
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="2" ShadowDepth="1" Color="#FFAEAEAE"/>
             </Grid.Effect>
@@ -75,7 +75,7 @@
                     </ListViewItem>
                     <ListViewItem x:Name="ItemProduct" Height="auto">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="JackOLantern" Height="25" Width="25" Margin="10"/>
+                            <materialDesign:PackIcon Kind="CategoryOutline" Height="25" Width="25" Margin="10"/>
                             <TextBlock Text="Sản phẩm" VerticalAlignment="Center"  Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
@@ -94,7 +94,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Height="70" VerticalAlignment="Top" Background="MediumPurple">
+            <Grid Grid.Row="0" Height="70" VerticalAlignment="Top" Background="Orange">
                 <TextBlock x:Name="TitleFunction" Text="Cake Shop App" HorizontalAlignment="Center"
                         VerticalAlignment="Center" FontSize="30"/>
                 <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
