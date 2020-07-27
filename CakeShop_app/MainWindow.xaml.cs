@@ -36,7 +36,8 @@ namespace CakeShop_app
         }
         private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            GridMain.Children.Clear();
+            GridMain.Children.Add(new UserControlHomeScreen());
         }
         private void btn_Aboutme(object sender, RoutedEventArgs e)
         {
