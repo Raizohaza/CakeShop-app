@@ -27,7 +27,7 @@ namespace CakeShop_app
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            var db = new CakeShop_dbEntities();
+            var db = new CakeShop_dbEntities1();
 
             var Cakes = db.Cakes.ToList();
             HomeListView.ItemsSource = Cakes;
