@@ -36,8 +36,28 @@ namespace CakeShop_app
         }
         private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            GridMain.Children.Clear();
-            GridMain.Children.Add(new UserControlHomeScreen());
+            var index = ListViewMenu.SelectedIndex;
+            if (index == 0)
+            {
+                GridMain.Children.Clear();
+                GridMain.Children.Add(new UserControlHomeScreen());
+            }
+            else if (index == 1)
+            {
+                GridMain.Children.Clear();
+                GridMain.Children.Add(new UserControlHomeScreen());
+            }
+            else if (index == 2)
+            {
+                GridMain.Children.Clear();
+                GridMain.Children.Add(new UserControlHomeScreen());
+            }
+            else
+            {
+                GridMain.Children.Clear();
+                GridMain.Children.Add(new UserControlHomeScreen());
+            }
+
         }
         private void btn_Aboutme(object sender, RoutedEventArgs e)
         {
@@ -56,6 +76,12 @@ namespace CakeShop_app
         private void btn_Exit(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            GridMain.Children.Clear();
+            GridMain.Children.Add(new UserControlHomeScreen());
         }
     }
 }
