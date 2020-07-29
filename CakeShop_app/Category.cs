@@ -11,20 +11,19 @@ namespace CakeShop_app
 {
     using System;
     using System.Collections.Generic;
-    using System.Collections.ObjectModel;
-
+    
     public partial class Category
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Category()
         {
-            this.Cakes = new ObservableCollection<Cake>();
+            this.Cakes = new HashSet<Cake>();
         }
     
         public int ID { get; set; }
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableCollection<Cake> Cakes { get; set; }
+        public virtual ICollection<Cake> Cakes { get; set; }
     }
 }

@@ -24,13 +24,19 @@ namespace CakeShop_app
         {
             InitializeComponent();
         }
+        CakeShop_dbEntities db = new CakeShop_dbEntities();
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            var db = new CakeShop_dbEntities();
-
             var Cakes = db.Cakes.ToList();
             HomeListView.ItemsSource = Cakes;
+        }
+
+        private void HomeListView_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            var Cakes = db.Cakes.ToList();
+            var item = HomeListView.SelectedItem as Cake;
+            var index = Cakes.IndexOf(item);
         }
     }
 }
