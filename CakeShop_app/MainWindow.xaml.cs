@@ -34,10 +34,24 @@ namespace CakeShop_app
             ButtonCloseMenu.Visibility = Visibility.Collapsed;
             ButtonOpenMenu.Visibility = Visibility.Visible;
         }
-        private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             GridMain.Children.Clear();
             GridMain.Children.Add(new UserControlHomeScreen());
+        }
+        private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var index = ListViewMenu.SelectedIndex;
+            if (index == 0)
+            {
+                GridMain.Children.Clear();
+                GridMain.Children.Add(new UserControlHomeScreen());
+            }
+            else
+            {
+                GridMain.Children.Clear();
+            }
+            
         }
         private void btn_Aboutme(object sender, RoutedEventArgs e)
         {
@@ -57,5 +71,7 @@ namespace CakeShop_app
         {
 
         }
+
+        
     }
 }

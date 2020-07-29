@@ -14,7 +14,7 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         WindowStartupLocation="CenterScreen"
-        Title="Cake Shop App" Height="600" Width="1080" >
+        Title="Cake Shop App" Height="600" Width="1080" Loaded="Window_Loaded">
     <Window.Resources>
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
