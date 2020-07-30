@@ -16,6 +16,12 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
+                        <StackPanel.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Delete" Click="DeleteItem_Click"/>
+                                <MenuItem Header="Edit" Click="EditItem_Click"/>
+                            </ContextMenu>
+                        </StackPanel.ContextMenu>
                         <TextBlock Text="{Binding ID}"/>
                         <TextBlock Text="   "/>
                         <TextBlock Text="{Binding Name}"/>

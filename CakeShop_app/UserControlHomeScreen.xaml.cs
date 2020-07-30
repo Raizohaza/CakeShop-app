@@ -38,5 +38,22 @@ namespace CakeShop_app
             var item = HomeListView.SelectedItem as Cake;
             var index = Cakes.IndexOf(item);
         }
+
+        
+        private void DeleteItem_Click(object sender, RoutedEventArgs e)
+        {
+            var item = HomeListView.SelectedItem as Cake;
+            db.Cakes.Remove(item);
+            db.SaveChanges();
+
+            //refresh
+            var Cakes = db.Cakes.ToList();
+            HomeListView.ItemsSource = Cakes;
+        }
+        private void EditItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }
