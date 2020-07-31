@@ -6,8 +6,11 @@
              xmlns:local="clr-namespace:CakeShop_app"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
-    <Grid >
-        <ListView x:Name="HomeListView" MouseLeftButtonUp="HomeListView_MouseLeftButtonUp">
+    <UserControl.Resources>
+        <local:RelativeToAsolutePathConverter x:Key="pathConverter"/>
+    </UserControl.Resources>
+    <Grid x:Name="GridMain">
+        <ListView x:Name="HomeListView" MouseLeftButtonUp="HomeListView_MouseLeftButtonUp" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel/>
@@ -15,19 +18,19 @@
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
                         <StackPanel.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Header="Delete" Click="DeleteItem_Click"/>
                                 <MenuItem Header="Edit" Click="EditItem_Click"/>
                             </ContextMenu>
                         </StackPanel.ContextMenu>
-                        <TextBlock Text="{Binding ID}"/>
-                        <TextBlock Text="   "/>
+                        <Image Source="{Binding Image,Converter={StaticResource pathConverter}}" Width="100" Height="100"/>
                         <TextBlock Text="{Binding Name}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button Content="+" Click="AddButton_Click" VerticalAlignment="Center" HorizontalAlignment="Right" Width="50" Margin="0,380,40,38"/>
     </Grid>
 </UserControl>
