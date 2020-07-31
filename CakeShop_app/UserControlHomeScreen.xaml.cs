@@ -55,5 +55,19 @@ namespace CakeShop_app
 
         }
 
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            var screen = new UserControlAddScreen();
+            GridMain.Children.Add(screen);
+            screen.Handler += Refresh;
+        }
+
+        private void Refresh(Cake item)
+        {
+            db.Cakes.Add(item);
+            db.SaveChanges();
+            var Cakes = db.Cakes.ToList();
+            HomeListView.ItemsSource = Cakes;
+        }
     }
 }
