@@ -98,7 +98,6 @@
                 <TextBlock x:Name="TitleFunction" Text="Cake Shop App" HorizontalAlignment="Center"
                         VerticalAlignment="Center" FontSize="30"/>
                 <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Text="LTC" FontSize="17" VerticalAlignment="Center"/>
                     <materialDesign:PopupBox PlacementMode="BottomAndAlignCentres" StaysOpen="False" Margin="10">
                         <StackPanel Width="150">
                             <Button Click="btn_Aboutme" Content="About me"/>

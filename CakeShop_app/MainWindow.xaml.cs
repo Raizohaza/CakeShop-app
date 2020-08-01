@@ -24,21 +24,12 @@ namespace CakeShop_app
         {
             InitializeComponent();
         }
-        private void btn_ButtonOpenMenu(object sender, RoutedEventArgs e)
-        {
-            ButtonCloseMenu.Visibility = Visibility.Visible;
-            ButtonOpenMenu.Visibility = Visibility.Collapsed;
-        }
-        private void btn_ButtonCloseMenu(object sender, RoutedEventArgs e)
-        {
-            ButtonCloseMenu.Visibility = Visibility.Collapsed;
-            ButtonOpenMenu.Visibility = Visibility.Visible;
-        }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             GridMain.Children.Clear();
             GridMain.Children.Add(new UserControlHomeScreen());
         }
+        #region SelectionChanged
         private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var index = ListViewMenu.SelectedIndex;
@@ -51,7 +42,20 @@ namespace CakeShop_app
             {
                 GridMain.Children.Clear();
             }
-            
+
+        }
+        #endregion
+
+        #region Buttons
+        private void btn_ButtonOpenMenu(object sender, RoutedEventArgs e)
+        {
+            ButtonCloseMenu.Visibility = Visibility.Visible;
+            ButtonOpenMenu.Visibility = Visibility.Collapsed;
+        }
+        private void btn_ButtonCloseMenu(object sender, RoutedEventArgs e)
+        {
+            ButtonCloseMenu.Visibility = Visibility.Collapsed;
+            ButtonOpenMenu.Visibility = Visibility.Visible;
         }
         private void btn_Aboutme(object sender, RoutedEventArgs e)
         {
@@ -71,7 +75,7 @@ namespace CakeShop_app
         {
 
         }
+        #endregion
 
-        
     }
 }
