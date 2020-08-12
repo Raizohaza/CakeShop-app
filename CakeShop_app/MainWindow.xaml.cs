@@ -41,17 +41,25 @@ namespace CakeShop_app
         }
         private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var index = ListViewMenu.SelectedIndex;
-            if (index == 0)
+            UserControl usc = null;
+            GridMain.Children.Clear();
+
+            switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
             {
-                GridMain.Children.Clear();
-                GridMain.Children.Add(new UserControlHomeScreen());
+                case "ItemHome":
+                    TitleFunction.Text = "Trang chủ";
+                    usc = new UserControlHomeScreen();
+                    GridMain.Children.Add(usc);
+                    break;
+                case "ItemBill":
+                    TitleFunction.Text = "Thanh toán";
+                    usc = new UserControlCreateCakeBill(GridMain);
+                    GridMain.Children.Add(usc);
+                    break;
+                default:
+                    break;
             }
-            else
-            {
-                GridMain.Children.Clear();
-            }
-            
+
         }
         private void btn_Aboutme(object sender, RoutedEventArgs e)
         {

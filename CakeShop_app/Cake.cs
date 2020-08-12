@@ -15,9 +15,9 @@ namespace CakeShop_app
     public partial class Cake
     {
         public int ID { get; set; }
-        public string Name { get; set; } = "";
-        public Nullable<int> Price { get; set; } = 0;
-        public string Image { get; set; } = "";
+        public string Name { get; set; }
+        public Nullable<int> Price { get; set; }
+        public string Image { get; set; }
         public Nullable<int> CatID { get; set; }
     
         public virtual Category Category { get; set; }

@@ -22,12 +22,14 @@ namespace CakeShop_app
     {
         public UserControlHomeScreen()
         {
+
             InitializeComponent();
         }
-        CakeShop_dbEntities db = new CakeShop_dbEntities();
+        CakeShop_dbEntities1 db = new CakeShop_dbEntities1();
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+
             var Cakes = db.Cakes.ToList();
             HomeListView.ItemsSource = Cakes;
         }
@@ -37,9 +39,10 @@ namespace CakeShop_app
             var Cakes = db.Cakes.ToList();
             var item = HomeListView.SelectedItem as Cake;
             var index = Cakes.IndexOf(item);
+            var screen = new UserControlShowDetail(item);
+            GridMain.Children.Add(screen);
         }
 
-        
         private void DeleteItem_Click(object sender, RoutedEventArgs e)
         {
             var item = HomeListView.SelectedItem as Cake;
