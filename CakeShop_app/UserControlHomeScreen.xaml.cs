@@ -30,7 +30,7 @@ namespace CakeShop_app
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
 
-            var Cakes = db.Bills.ToList();
+            var Cakes = db.Cakes.ToList();
             HomeListView.ItemsSource = Cakes;
 
         }
