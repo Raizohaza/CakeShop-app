@@ -47,9 +47,9 @@ CREATE TABLE [dbo].[Category](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID]) VALUES (1, N'Bánh kem', 20000, N'banhkem.png', 2)
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID]) VALUES (1, N'Bánh kem', 20000, N'banhkem.jpg', 2)
 GO
-INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID]) VALUES (2, N'Bánh ú', 12000, N'banhu.png', 3)
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID]) VALUES (2, N'Bánh ú', 12000, N'banhu.jpg', 3)
 GO
 INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID]) VALUES (3, N'Bánh xèo', 20000, N'banhxeo.jpg', 1)
 GO
