@@ -13,10 +13,10 @@ namespace CakeShop_app
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class CakeShop_dbEntities : DbContext
+    public partial class CakeShop_dbEntities69 : DbContext
     {
-        public CakeShop_dbEntities()
-            : base("name=CakeShop_dbEntities")
+        public CakeShop_dbEntities69()
+            : base("name=CakeShop_dbEntities69")
         {
         }
     
@@ -25,6 +25,7 @@ namespace CakeShop_app
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Bill> Bills { get; set; }
         public virtual DbSet<Cake> Cakes { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
     }

@@ -12,14 +12,14 @@ namespace CakeShop_app
     using System;
     using System.Collections.Generic;
     
-    public partial class Cake
+    public partial class Bill
     {
         public int ID { get; set; }
-        public string Name { get; set; }
-        public Nullable<int> Price { get; set; }
-        public string Image { get; set; }
-        public Nullable<int> CatID { get; set; }
+        public Nullable<int> CakeID { get; set; }
+        public Nullable<int> Quantity { get; set; }
+        public Nullable<int> Totality { get; set; }
     
-        public virtual Category Category { get; set; }
+        public virtual Bill Bill1 { get; set; }
+        public virtual Bill Bill2 { get; set; }
     }
 }

@@ -24,7 +24,7 @@ namespace CakeShop_app
         {
             InitializeComponent();
         }
-        CakeShop_dbEntities db = new CakeShop_dbEntities();
+        CakeShop_dbEntities69 db = new CakeShop_dbEntities69();
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {

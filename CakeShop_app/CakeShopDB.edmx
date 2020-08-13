@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="CakeShop_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bill">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="CakeID" Type="int" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="Totality" Type="int" />
+        </EntityType>
         <EntityType Name="Cake">
           <Key>
             <PropertyRef Name="ID" />
@@ -22,6 +31,18 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="ntext" />
         </EntityType>
+        <Association Name="FK_Bill_Bill">
+          <End Role="Bill" Type="Self.Bill" Multiplicity="1" />
+          <End Role="Bill1" Type="Self.Bill" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Bill">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Bill1">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Cake_Category">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
           <End Role="Cake" Type="Self.Cake" Multiplicity="*" />
@@ -35,8 +56,13 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="CakeShop_dbModelStoreContainer">
+          <EntitySet Name="Bill" EntityType="Self.Bill" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cake" EntityType="Self.Cake" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Bill_Bill" Association="Self.FK_Bill_Bill">
+            <End Role="Bill" EntitySet="Bill" />
+            <End Role="Bill1" EntitySet="Bill" />
+          </AssociationSet>
           <AssociationSet Name="FK_Cake_Category" Association="Self.FK_Cake_Category">
             <End Role="Category" EntitySet="Category" />
             <End Role="Cake" EntitySet="Cake" />
@@ -47,6 +73,17 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CakeShop_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bill">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="CakeID" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Totality" Type="Int32" />
+          <NavigationProperty Name="Bill1" Relationship="Self.FK_Bill_Bill" FromRole="Bill" ToRole="Bill1" />
+          <NavigationProperty Name="Bill2" Relationship="Self.FK_Bill_Bill" FromRole="Bill1" ToRole="Bill" />
+        </EntityType>
         <EntityType Name="Cake">
           <Key>
             <PropertyRef Name="ID" />
@@ -66,6 +103,18 @@
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Cakes" Relationship="Self.FK_Cake_Category" FromRole="Category" ToRole="Cake" />
         </EntityType>
+        <Association Name="FK_Bill_Bill">
+          <End Role="Bill" Type="Self.Bill" Multiplicity="1" />
+          <End Role="Bill1" Type="Self.Bill" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Bill">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Bill1">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Cake_Category">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
           <End Role="Cake" Type="Self.Cake" Multiplicity="*" />
@@ -78,9 +127,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="CakeShop_dbEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="CakeShop_dbEntities69" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bills" EntityType="Self.Bill" />
           <EntitySet Name="Cakes" EntityType="Self.Cake" />
           <EntitySet Name="Categories" EntityType="Self.Category" />
+          <AssociationSet Name="FK_Bill_Bill" Association="Self.FK_Bill_Bill">
+            <End Role="Bill" EntitySet="Bills" />
+            <End Role="Bill1" EntitySet="Bills" />
+          </AssociationSet>
           <AssociationSet Name="FK_Cake_Category" Association="Self.FK_Cake_Category">
             <End Role="Category" EntitySet="Categories" />
             <End Role="Cake" EntitySet="Cakes" />
@@ -91,7 +145,17 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CakeShop_dbModelStoreContainer" CdmEntityContainer="CakeShop_dbEntities">
+        <EntityContainerMapping StorageEntityContainer="CakeShop_dbModelStoreContainer" CdmEntityContainer="CakeShop_dbEntities69">
+          <EntitySetMapping Name="Bills">
+            <EntityTypeMapping TypeName="CakeShop_dbModel.Bill">
+              <MappingFragment StoreEntitySet="Bill">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CakeID" ColumnName="CakeID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Totality" ColumnName="Totality" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Cakes">
             <EntityTypeMapping TypeName="CakeShop_dbModel.Cake">
               <MappingFragment StoreEntitySet="Cake">
