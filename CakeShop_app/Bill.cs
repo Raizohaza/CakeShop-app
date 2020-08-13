@@ -17,7 +17,7 @@ namespace CakeShop_app
         public int ID { get; set; }
         public Nullable<int> CakeID { get; set; }
         public Nullable<int> Quantity { get; set; }
-        public Nullable<int> Totalily { get; set; }
+        public Nullable<int> Totality { get; set; }
     
         public virtual Cake Cake { get; set; }
     }

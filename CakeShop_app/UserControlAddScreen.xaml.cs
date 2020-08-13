@@ -30,6 +30,9 @@ namespace CakeShop_app
         public event AddItem Handler;
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            var categories = UserControlHomeScreen.db.Categories.ToList();
+            CakeCategory.ItemsSource = categories;
+            CakeCategory.ItemsSource = categories;
         }
 
         private void ChooseImageButton_Click(object sender, RoutedEventArgs e)
@@ -46,7 +49,7 @@ namespace CakeShop_app
         {
             var item = new Cake()
             {
-                CatID = 1,
+                CatID = CakeCategory.SelectedIndex+1,
                 Name = CakeName.Text.ToString(),
                 Price = Int32.Parse(CakePrice.Text.ToString()),
                 Image = imagelink

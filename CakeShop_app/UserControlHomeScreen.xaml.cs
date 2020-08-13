@@ -25,12 +25,12 @@ namespace CakeShop_app
 
             InitializeComponent();
         }
-        CakeShop_dbEntities1 db = new CakeShop_dbEntities1();
+        public static CakeShop_dbEntities2 db = new CakeShop_dbEntities2();
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
 
-            var Cakes = db.Bills.ToList();
+            var Cakes = db.Cakes.ToList();
             HomeListView.ItemsSource = Cakes;
 
         }
@@ -38,10 +38,13 @@ namespace CakeShop_app
         private void HomeListView_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             var Cakes = db.Cakes.ToList();
-            var item = HomeListView.SelectedItem as Cake;
-            var index = Cakes.IndexOf(item);
-            var screen = new UserControlShowDetail(item);
-            GridMain.Children.Add(screen);
+            var index = Cakes.IndexOf(HomeListView.SelectedItem as Cake);
+            if (index <= Cakes.Count && index !=-1)
+            {
+                var item = HomeListView.SelectedItem as Cake;
+                var screen = new UserControlShowDetail(item);
+                GridMain.Children.Add(screen);
+            }
         }
 
         private void DeleteItem_Click(object sender, RoutedEventArgs e)
