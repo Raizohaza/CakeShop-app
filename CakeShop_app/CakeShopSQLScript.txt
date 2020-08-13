@@ -1,4 +1,6 @@
-﻿USE [CakeShop_db]
+﻿Create database [CakeShop_db]
+go
+USE [CakeShop_db]
 GO
 /****** Object:  Table [dbo].[Bill]    Script Date: 13/8/2020 2:47:39 PM ******/
 SET ANSI_NULLS ON
