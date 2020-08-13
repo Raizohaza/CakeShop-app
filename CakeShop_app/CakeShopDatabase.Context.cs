@@ -25,6 +25,7 @@ namespace CakeShop_app
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Bill> Bills { get; set; }
         public virtual DbSet<Cake> Cakes { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
     }

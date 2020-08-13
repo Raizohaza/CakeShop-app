@@ -178,20 +178,29 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
+    <Compile Include="Bill.cs">
+      <DependentUpon>CakeShopDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
+    <Compile Include="Cake.cs">
+      <DependentUpon>CakeShopDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model1.Designer.cs">
+    <Compile Include="CakeShopDatabase.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>CakeShopDatabase.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CakeShopDatabase.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CakeShopDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CakeShopDatabase.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CakeShopDatabase.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Category.cs">
+      <DependentUpon>CakeShopDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="RelativeToAsolutePathConverter.cs" />
     <Compile Include="UserControlAddScreen.xaml.cs">
@@ -214,9 +223,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Cake.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="CakeShopModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -231,9 +237,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CakeShopModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Category.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -278,15 +281,15 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CakeShopModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <EntityDeploy Include="CakeShopDatabase.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CakeShopDatabase.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="CakeShopDatabase.edmx.diagram">
+      <DependentUpon>CakeShopDatabase.edmx</DependentUpon>
+    </None>
     <None Include="CakeShopModel.edmx.diagram">
       <DependentUpon>CakeShopModel.edmx</DependentUpon>
-    </None>
-    <EntityDeploy Include="Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -298,6 +301,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CakeShopDatabase.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CakeShopDatabase.edmx</DependentUpon>
+      <LastGenOutput>CakeShopDatabase.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="CakeShopDatabase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CakeShopDatabase.edmx</DependentUpon>
+      <LastGenOutput>CakeShopDatabase.cs</LastGenOutput>
+    </Content>
     <Content Include="CakeShopModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CakeShopModel.edmx</DependentUpon>
@@ -307,16 +320,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CakeShopModel.edmx</DependentUpon>
       <LastGenOutput>CakeShopModel.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Resource Include="CakeShopSQLScript.txt" />
   </ItemGroup>

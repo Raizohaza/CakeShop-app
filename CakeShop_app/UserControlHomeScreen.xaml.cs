@@ -30,8 +30,9 @@ namespace CakeShop_app
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
 
-            var Cakes = db.Cakes.ToList();
+            var Cakes = db.Bills.ToList();
             HomeListView.ItemsSource = Cakes;
+
         }
 
         private void HomeListView_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)

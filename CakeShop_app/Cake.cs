@@ -14,12 +14,20 @@ namespace CakeShop_app
     
     public partial class Cake
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Cake()
+        {
+            this.Bills = new HashSet<Bill>();
+        }
+    
         public int ID { get; set; }
         public string Name { get; set; }
         public Nullable<int> Price { get; set; }
         public string Image { get; set; }
         public Nullable<int> CatID { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Bill> Bills { get; set; }
         public virtual Category Category { get; set; }
     }
 }
