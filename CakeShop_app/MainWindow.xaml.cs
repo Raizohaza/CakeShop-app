@@ -39,28 +39,6 @@ namespace CakeShop_app
             GridMain.Children.Clear();
             GridMain.Children.Add(new UserControlHomeScreen());
         }
-        private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            UserControl usc = null;
-            GridMain.Children.Clear();
-
-            switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
-            {
-                case "ItemHome":
-                    TitleFunction.Text = "Trang chủ";
-                    usc = new UserControlHomeScreen();
-                    GridMain.Children.Add(usc);
-                    break;
-                case "ItemBill":
-                    TitleFunction.Text = "Thanh toán";
-                    usc = new UserControlCreateCakeBill(GridMain);
-                    GridMain.Children.Add(usc);
-                    break;
-                default:
-                    break;
-            }
-
-        }
         private void btn_Aboutme(object sender, RoutedEventArgs e)
         {
 
@@ -80,6 +58,26 @@ namespace CakeShop_app
 
         }
 
-        
+        private void ListViewMenu_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            UserControl usc = null;
+            GridMain.Children.Clear();
+
+            switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
+            {
+                case "ItemHome":
+                    TitleFunction.Text = "Trang chủ";
+                    usc = new UserControlHomeScreen();
+                    GridMain.Children.Add(usc);
+                    break;
+                case "ItemBill":
+                    TitleFunction.Text = "Thanh toán";
+                    usc = new UserControlCreateCakeBill(GridMain);
+                    GridMain.Children.Add(usc);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

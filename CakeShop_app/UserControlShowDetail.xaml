@@ -11,9 +11,9 @@
     </UserControl.Resources>
     <Grid Background="Honeydew">
         <Image Source="{Binding Image,Converter={StaticResource pathConverter}}" Height="236" x:Name="RecipesAvatar" HorizontalAlignment="Left" Width="341" Margin="0,58,0,156" />
-            <TextBlock FontSize="20" Foreground="Black" x:Name="nameTextBox" Text="{Binding Name}" HorizontalAlignment="Center" Width="341" Canvas.Top="296" Canvas.Left="23" RenderTransformOrigin="0.33,1.542" Margin="39,333,420,67"/>
-            <TextBlock FontSize="20"  x:Name="PriceTextBox" Text="{Binding Price}" HorizontalAlignment="Center" Width="341" Canvas.Top="296" Canvas.Left="23" RenderTransformOrigin="0.33,1.542" Margin="39,390,420,10" Foreground="Black"/>
-            <Button x:Name="CartsClick" Height="33" Width="92" Margin="0,400,28,0" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="Button_CartsClick">
+        <TextBlock FontSize="20" Foreground="Black" x:Name="nameTextBox" Text="{Binding Name}" HorizontalAlignment="Center" Width="341" Canvas.Top="296" Canvas.Left="23" RenderTransformOrigin="0.33,1.542" Margin="39,333,420,67"/>
+        <TextBlock FontSize="20"  x:Name="PriceTextBox" Text="{Binding Price}" HorizontalAlignment="Center" Width="341" Canvas.Top="296" Canvas.Left="23" RenderTransformOrigin="0.33,1.542" Margin="39,390,420,10" Foreground="Black"/>
+        <Button x:Name="CartsClick" Height="33" Width="92" Margin="0,400,28,0" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="Button_CartsClick">
             <TextBlock Text="Mua Hàng"/>
         </Button>
     </Grid>

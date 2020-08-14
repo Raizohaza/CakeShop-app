@@ -9,7 +9,7 @@
     <UserControl.Resources>
         <local:RelativeToAsolutePathConverter x:Key="pathConverter"/>
     </UserControl.Resources>
-    <Grid x:Name="GridMain">
+    <Grid x:Name="GridMain" Background="White">
         <ListView x:Name="HomeListView" MouseLeftButtonUp="HomeListView_MouseLeftButtonUp" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -26,7 +26,7 @@
                             </ContextMenu>
                         </StackPanel.ContextMenu>
                         <Image Source="{Binding Image,Converter={StaticResource pathConverter}}" Width="100" Height="100"/>
-                        <TextBlock Text="{Binding Name}"/>
+                        <TextBlock Text="{Binding Name}" Width="100" TextWrapping="WrapWithOverflow" Height="30" TextAlignment="Center"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

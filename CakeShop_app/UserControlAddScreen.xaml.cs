@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -32,7 +33,6 @@ namespace CakeShop_app
         {
             var categories = UserControlHomeScreen.db.Categories.ToList();
             CakeCategory.ItemsSource = categories;
-            CakeCategory.ItemsSource = categories;
         }
 
         private void ChooseImageButton_Click(object sender, RoutedEventArgs e)
@@ -45,23 +45,51 @@ namespace CakeShop_app
             }
         }
 
+        private bool CheckData()
+        {
+            if (CakeName.Text == "" || CakePrice.Text== "" || imagelink == "")
+            {
+                if (CakeName.Text == "")
+                    CakeName.SetValue(Border.BorderBrushProperty, Brushes.Red);
+
+                if (CakePrice.Text == "")
+                    CakePrice.SetValue(Border.BorderBrushProperty, Brushes.Red);
+
+                if (imagelink == "")
+                    CakeImage.SetValue(Border.BorderBrushProperty, Brushes.Red);
+                if (CakeCategory.SelectedIndex == -1)
+                    CakeCategory.SetValue(Border.BorderBrushProperty, Brushes.Red);
+                return false;
+            }
+            return true;
+        }
+
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
-            var item = new Cake()
+            if (CheckData())
             {
-                CatID = CakeCategory.SelectedIndex+1,
-                Name = CakeName.Text.ToString(),
-                Price = Int32.Parse(CakePrice.Text.ToString()),
-                Image = imagelink
-            };
-            Handler?.Invoke(item);
-            this.Visibility = Visibility.Collapsed;
-            
+                var categories = UserControlHomeScreen.db.Categories.ToList();
+                var item = new Cake()
+                {
+                    CatID = categories[CakeCategory.SelectedIndex].ID,
+                    Name = CakeName.Text.ToString(),
+                    Price = Int32.Parse(CakePrice.Text.ToString()),
+                    Image = imagelink
+                };
+                Handler?.Invoke(item);
+                this.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Visibility = Visibility.Collapsed;
+        }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }
