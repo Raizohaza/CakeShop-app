@@ -16,5 +16,7 @@
         <Button x:Name="CartsClick" Height="33" Width="92" Margin="0,400,28,0" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="Button_CartsClick">
             <TextBlock Text="Mua Hàng"/>
         </Button>
+        <TextBlock FontSize="20" Foreground="Black" x:Name="DetalTextBox" TextWrapping="WrapWithOverflow" TextAlignment="Center" Text="{Binding Detail}" HorizontalAlignment="Center" Width="341" Canvas.Top="296" Canvas.Left="23" RenderTransformOrigin="0.33,1.542" Margin="431,58,28,67"/>
+
     </Grid>
 </UserControl>
