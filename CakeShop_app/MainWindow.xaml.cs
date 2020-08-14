@@ -70,6 +70,11 @@ namespace CakeShop_app
                     usc = new UserControlTypes();
                     GridMain.Children.Add(usc);
                     break;
+                case "ItemProduct":
+                    TitleFunction.Text = "Thanh toán";
+                    usc = new UserControlHomeScreen();
+                    GridMain.Children.Add(usc);
+                    break;
                 case "ItemBill":
                     TitleFunction.Text = "Thanh toán";
                     usc = new UserControlCreateCakeBill(GridMain);
