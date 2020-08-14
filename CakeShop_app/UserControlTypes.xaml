@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="CakeShop_app.UserControlTypes"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CakeShop_app"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="White">
+        <Image x:Name="Cake_ava" Source="Images\cake_ava.jpg" Height="250" Width="250" Margin="0,-25,550,224.6"/>
+        <Image x:Name="Fresh_Bread_ava" Source="Images\bread_ava.jpg" Width="250" Margin="275,10,275,126.6" />
+        <Image x:Name="Sweet_Bread_ava" Source="Images\sweet_bread_ava.jpg" Height="250" Width="250" Margin="25,200,525,-0.4"/>
+
+
+        <Image x:Name="Gato_Bread_ava" Source="Images\gato_ava.jpg" Margin="561,209,0,-0.4" />
+
+
+
+        <Image x:Name="trang_mieng_ava" Source="Images\trang_mieng_ava.jpg" Height="250" Width="250" Margin="550,-25,0,224.6" />
+
+
+
+    </Grid>
+</UserControl>

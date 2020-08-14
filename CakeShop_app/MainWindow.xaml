@@ -104,7 +104,13 @@
                 <TextBlock x:Name="TitleFunction" Text="Cake Shop App" HorizontalAlignment="Center"
                         VerticalAlignment="Center" FontSize="30"/>
                 <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Text="LTC" FontSize="17" VerticalAlignment="Center"/>
+                    <ListView x:Name="Cart_Click" MouseLeftButtonUp="Cart_Click_MouseLeftButtonUp">
+                        <ListViewItem>
+                            <StackPanel>
+                                <materialDesign:PackIcon Kind="Cart" Height="44" Width="48" Foreground="White"/>
+                            </StackPanel>
+                        </ListViewItem>
+                    </ListView>
                     <materialDesign:PopupBox PlacementMode="BottomAndAlignCentres" StaysOpen="False" Margin="10">
                         <StackPanel Width="150">
                             <Button Click="btn_Aboutme" Content="About me"/>
@@ -117,7 +123,7 @@
 
                 </StackPanel>
             </Grid>
-            <Grid x:Name="GridMain" Grid.Row="1" Background="AliceBlue">
+            <Grid x:Name="GridMain" Grid.Row="1" Background="White">
 
             </Grid>
         </Grid>

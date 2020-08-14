@@ -18,6 +18,7 @@ namespace CakeShop_app
         public Nullable<int> CakeID { get; set; }
         public Nullable<int> Quantity { get; set; }
         public Nullable<int> Totality { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
     
         public virtual Cake Cake { get; set; }
     }

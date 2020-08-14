@@ -9,14 +9,14 @@
     <UserControl.Resources>
         <local:RelativeToAsolutePathConverter x:Key="pathConverter"/>
     </UserControl.Resources>
-    <Grid Background="Honeydew">
-        <Image Source="{Binding Image,Converter={StaticResource pathConverter}}" Height="236" x:Name="RecipesAvatar" HorizontalAlignment="Left" Width="341" Margin="0,58,0,156" />
-        <TextBlock FontSize="20" Foreground="Black" x:Name="nameTextBox" Text="{Binding Name}" HorizontalAlignment="Center" Width="341" Canvas.Top="296" Canvas.Left="23" RenderTransformOrigin="0.33,1.542" Margin="39,333,420,67"/>
-        <TextBlock FontSize="20"  x:Name="PriceTextBox" Text="{Binding Price}" HorizontalAlignment="Center" Width="341" Canvas.Top="296" Canvas.Left="23" RenderTransformOrigin="0.33,1.542" Margin="39,390,420,10" Foreground="Black"/>
-        <Button x:Name="CartsClick" Height="33" Width="92" Margin="0,400,28,0" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="Button_CartsClick">
+    <Grid Background="White">
+        <Image Source="{Binding Image,Converter={StaticResource pathConverter}}" x:Name="RecipesAvatar" HorizontalAlignment="Left" Width="370" Margin="10,10,0,16.6" />
+        <TextBlock FontSize="30" Foreground="Black" x:Name="nameTextBox" Text="{Binding Name}" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Center" Width="405" Canvas.Top="296" Canvas.Left="23" RenderTransformOrigin="0.33,1.542" Margin="385,10,10,404.6"/>
+        <TextBlock FontSize="30"  x:Name="PriceTextBox" Text="{Binding Price}" FontStyle="Italic" FontWeight="Thin" VerticalAlignment="Center" HorizontalAlignment="Center" Width="405" Canvas.Top="296" Canvas.Left="23" RenderTransformOrigin="0.33,1.542" Margin="385,70,10,339.6" Foreground="Black"/>
+        <Button x:Name="CartsClick" Height="36" Width="109" Margin="0,397,28,0" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="Button_CartsClick">
             <TextBlock Text="Mua Hàng"/>
         </Button>
-        <TextBlock FontSize="20" Foreground="Black" x:Name="DetalTextBox" TextWrapping="WrapWithOverflow" TextAlignment="Center" Text="{Binding Detail}" HorizontalAlignment="Center" Width="341" Canvas.Top="296" Canvas.Left="23" RenderTransformOrigin="0.33,1.542" Margin="431,58,28,67"/>
+        <TextBlock FontSize="30" Foreground="Black" x:Name="DetalTextBox" TextWrapping="WrapWithOverflow" TextAlignment="Justify" Text="{Binding Detail}"  HorizontalAlignment="Center" Width="405" Canvas.Top="296" Canvas.Left="23" RenderTransformOrigin="0.33,1.542" Margin="385,141,10,16.6"/>
 
     </Grid>
 </UserControl>
