@@ -26,12 +26,18 @@ namespace CakeShop_app
         {
             InitializeComponent();
         }
+        List<Category> categories;
+        public UserControlAddScreen(List<Category> data)
+        {
+            InitializeComponent();
+            categories = data;
+        }
         string imagelink = "";
         public delegate void AddItem(Cake item);
         public event AddItem Handler;
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            var categories = UserControlHomeScreen.db.Categories.ToList();
+            
             CakeCategory.ItemsSource = categories;
         }
 
@@ -69,7 +75,6 @@ namespace CakeShop_app
         {
             if (CheckData())
             {
-                var categories = UserControlHomeScreen.db.Categories.ToList();
                 var item = new Cake()
                 {
                     CatID = categories[CakeCategory.SelectedIndex].ID,

@@ -30,7 +30,7 @@ namespace CakeShop_app
             InitializeComponent();
             Category = cat;
         }
-        public static CakeShop_dbEntities2 db = new CakeShop_dbEntities2();
+        private  CakeShop_dbEntities2 db = new CakeShop_dbEntities2();
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
@@ -56,7 +56,16 @@ namespace CakeShop_app
             {
                 var item = HomeListView.SelectedItem as Cake;
                 var screen = new UserControlShowDetail(item);
+                screen.Handler += Status;
                 GridMain.Children.Add(screen);
+            }
+        }
+
+        private void Status(int flags)
+        {
+            if (flags == 1)
+            {
+                db.SaveChanges();
             }
         }
 
@@ -72,12 +81,21 @@ namespace CakeShop_app
         }
         private void EditItem_Click(object sender, RoutedEventArgs e)
         {
-
+            var Cakes = db.Cakes.ToList();
+            var index = Cakes.IndexOf(HomeListView.SelectedItem as Cake);
+            if (index <= Cakes.Count && index != -1)
+            {
+                var item = HomeListView.SelectedItem as Cake;
+                var screen = new UserControlShowDetail(item,0);
+                screen.Handler += Status;
+                GridMain.Children.Add(screen);
+            }
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            var screen = new UserControlAddScreen();
+            var categories = db.Categories.ToList();
+            var screen = new UserControlAddScreen(categories);
             GridMain.Children.Add(screen);
             screen.Handler += Refresh;
         }
@@ -89,5 +107,7 @@ namespace CakeShop_app
             var Cakes = db.Cakes.ToList();
             HomeListView.ItemsSource = Cakes;
         }
+
+        
     }
 }
