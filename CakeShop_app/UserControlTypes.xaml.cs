@@ -20,10 +20,15 @@ namespace CakeShop_app
     /// </summary>
     public partial class UserControlTypes : UserControl
     {
+        public delegate void SetCatID(int CatID);
+        public event SetCatID Handler;
         public UserControlTypes()
         {
             InitializeComponent();
         }
+
+        
+
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
@@ -33,6 +38,31 @@ namespace CakeShop_app
             Sweet_Bread_ava.Source = new BitmapImage(new Uri(folder+ "Images\\Sweet_Bread_ava.jpg"));
             Gato_Bread_ava.Source = new BitmapImage(new Uri(folder+ "Images\\gato_ava.jpg"));
             trang_mieng_ava.Source = new BitmapImage(new Uri(folder+ "Images\\trang_mieng_ava.jpg"));
+        }
+
+        private void Cake_ava_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Handler?.Invoke(1);
+        }
+
+        private void Fresh_Bread_ava_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Handler?.Invoke(2);
+        }
+
+        private void Sweet_Bread_ava_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Handler?.Invoke(3);
+        }
+
+        private void Gato_Bread_ava_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Handler?.Invoke(5);
+        }
+
+        private void trang_mieng_ava_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Handler?.Invoke(4);
         }
     }
 }

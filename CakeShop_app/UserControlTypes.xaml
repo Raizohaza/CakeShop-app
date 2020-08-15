@@ -6,24 +6,23 @@
              xmlns:local="clr-namespace:CakeShop_app"
              mc:Ignorable="d" 
              d:DesignHeight="499" d:DesignWidth="1002" Loaded="UserControl_Loaded">
-    <Grid Background="White">
+    <Grid Height="499" Width="1002" Background="White"  Name="MainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="755*"/>
             <ColumnDefinition Width="247*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
-            <Image x:Name="Cake_ava" Source="Images\cake_ava.jpg" Stretch="Uniform"/>
+            <Image x:Name="Cake_ava" Source="Images\cake_ava.jpg" Stretch="Uniform" MouseLeftButtonUp="Cake_ava_MouseLeftButtonUp"/>
         </Grid>
         <Grid Grid.Column="1">
             <ScrollViewer>
                 <StackPanel>
-                    <Image x:Name="Fresh_Bread_ava" Source="Images\bread_ava.jpg"  Stretch="UniformToFill"/>
-                    <Image x:Name="Sweet_Bread_ava" Source="Images\sweet_bread_ava.jpg" Stretch="UniformToFill"/>
-                    <Image x:Name="Gato_Bread_ava" Source="Images\gato_ava.jpg" Stretch="UniformToFill"/>
-                    <Image x:Name="trang_mieng_ava" Source="Images\trang_mieng_ava.jpg"  Stretch="UniformToFill" />
+                    <Image x:Name="Fresh_Bread_ava" Source="Images\bread_ava.jpg"  Stretch="UniformToFill" MouseDown="Fresh_Bread_ava_MouseDown"/>
+                    <Image x:Name="Sweet_Bread_ava" Source="Images\sweet_bread_ava.jpg" Stretch="UniformToFill" MouseDown="Sweet_Bread_ava_MouseDown"/>
+                    <Image x:Name="Gato_Bread_ava" Source="Images\gato_ava.jpg" Stretch="UniformToFill" MouseDown="Gato_Bread_ava_MouseDown"/>
+                    <Image x:Name="trang_mieng_ava" Source="Images\trang_mieng_ava.jpg"  Stretch="UniformToFill" MouseDown="trang_mieng_ava_MouseDown"/>
                 </StackPanel>
             </ScrollViewer>
         </Grid>
-
     </Grid>
 </UserControl>

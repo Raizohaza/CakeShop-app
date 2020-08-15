@@ -22,17 +22,30 @@ namespace CakeShop_app
     {
         public UserControlHomeScreen()
         {
-
             InitializeComponent();
         }
-        public static CakeShop_dbEntities3 db = new CakeShop_dbEntities3();
+        int Category = 0;
+        public UserControlHomeScreen(int cat)
+        {
+            InitializeComponent();
+            Category = cat;
+        }
+        public static CakeShop_dbEntities2 db = new CakeShop_dbEntities2();
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-
             var Cakes = db.Cakes.ToList();
-            HomeListView.ItemsSource = Cakes;
+            if (Category == 0)
+            {
+                HomeListView.ItemsSource = Cakes;
+                return;
+            }
 
+            var cakeFillered = from cake in db.Cakes
+                               where cake.CatID == Category
+                               select cake;
+            var data = cakeFillered.ToList();
+            HomeListView.ItemsSource = data;
         }
 
         private void HomeListView_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
