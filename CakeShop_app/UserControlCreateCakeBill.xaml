@@ -8,11 +8,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid x:Name="GridBill">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
+       
         <materialDesign:Card Grid.Row="0">
             <WrapPanel>
                 <ComboBox x:Name="DisplayNameCustomer" Loaded="loadCustomer" materialDesign:HintAssist.Hint="Tên khách hàng" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
@@ -23,23 +19,18 @@
             </WrapPanel>
         </materialDesign:Card>
         <materialDesign:Card Grid.Row="1">
-            <WrapPanel HorizontalAlignment="Center">
-                <Button Click="btn_Add" Content="Thêm" Margin="5" Width="100"></Button>
-                <Button Click="btn_Del" Content="Xóa" Margin="5" Width="100"></Button>
-                <Button Click="btn_Edit" Content="Sửa" Margin="5" Width="100"></Button>
-                <Button Click="btn_BillDetail" Content="Chi tiết" Margin="5" Width="100"></Button>
-            </WrapPanel>
+            <WrapPanel HorizontalAlignment="Center"/>
         </materialDesign:Card>
-        <materialDesign:Card Grid.Row="2" Margin="5" VerticalAlignment="Stretch">
+        <materialDesign:Card  Margin="5" VerticalAlignment="Stretch">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <DataGrid SelectionChanged="BillDTG_SelectionChanged"  Name="BillDTG" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" >
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="ID" Binding="{Binding ID}"/>
-                        <DataGridTextColumn Header="Tên khách hàng" Binding="{Binding Customer.DisplayName}"/>
-                        <DataGridTextColumn Header="Ngày mua" Binding="{Binding DateBill}"/>
-                        <DataGridTextColumn Header="Khuyến mãi" Binding="{Binding Sale.DisplayName}"/>
-                        <DataGridTextColumn Header="Vận chuyển" Binding="{Binding Transport.DisplayName}"/>
-                        <DataGridTextColumn Header="Tổng tiền" Binding="{Binding SumPrice}"/>
+                        <DataGridTextColumn Header="Sản Phẩm" Binding="{Binding Customer.DisplayName}"/>
+                        <DataGridTextColumn Header="Ngày Mua" Binding="{Binding DateBill}"/>
+                        <DataGridTextColumn Header="Giá" Binding="{Binding Sale.DisplayName}"/>
+                        <DataGridTextColumn Header="Số Lượng" Binding="{Binding Transport.DisplayName}"/>
+                        <DataGridTextColumn Header="Tổng" Binding="{Binding SumPrice}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </ScrollViewer>

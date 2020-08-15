@@ -19,11 +19,11 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="6*"/>
-                <RowDefinition Height="4*"/>
+                <RowDefinition Height="7*"/>
+                <RowDefinition Height="2.5*"/>
             </Grid.RowDefinitions>
             <Image Grid.Row="0" Name="CakeImage" Source="C:\Users\Admin\Source\Repos\Raizohaza\CakeShop-app\CakeShop_app\Images\logo.jpg" Margin="30" />
-            <Button Grid.Row="1" Content="..." Click="ChooseImageButton_Click" Width="100" Height="100" Background="Azure" Foreground="Black"/>
+            <Button Grid.Row="1" Content="..." Click="ChooseImageButton_Click" Width="70" Height="70" Background="Azure" Foreground="Black"/>
         </Grid>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
@@ -32,6 +32,7 @@
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
+            
             <DockPanel Grid.Row="0" Grid.Column="1" Height="40" Margin="20">
                 <TextBox x:Name="CakeName" FontSize="20" HorizontalAlignment="Left" Width="440" Foreground="Black" materialDesign:HintAssist.Hint="Name"/>
             </DockPanel>
@@ -47,10 +48,21 @@
                     </ComboBox.ItemTemplate>
                 </ComboBox>
             </DockPanel>
-            <DockPanel Grid.Row="3">
-                <Button Content="Create" Click="CreateButton_Click" Width="75" Height="75" Background="Azure" Foreground="Black"/>
-                <Button Content="Cancel" Click="CancelButton_Click" Width="75" Height="75" Background="Azure" Foreground="Black"/>
-            </DockPanel>
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Button  Content="Create" Click="CreateButton_Click" Width="75" Height="75" Background="Azure" Foreground="Black" HorizontalAlignment="Center" />
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button  Content="Cancel" Click="CancelButton_Click" Width="75" Height="75" Background="Azure" Foreground="Black" HorizontalAlignment="Center"/>
+
+                </Grid>
+            </Grid>
+           
+
         </Grid>
     </Grid>
 </UserControl>

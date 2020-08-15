@@ -47,6 +47,7 @@ namespace CakeShop_app
 
         private bool CheckData()
         {
+
             if (CakeName.Text == "" || CakePrice.Text== "" || imagelink == "")
             {
                 if (CakeName.Text == "")

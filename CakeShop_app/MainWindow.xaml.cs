@@ -37,7 +37,10 @@ namespace CakeShop_app
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             GridMain.Children.Clear();
-            GridMain.Children.Add(new UserControlHomeScreen());
+            TitleFunction.Text = "Trang chủ";
+            var screen = new UserControlTypes();
+            screen.Handler += Categories;
+            GridMain.Children.Add(screen);
         }
         private void btn_Aboutme(object sender, RoutedEventArgs e)
         {
@@ -67,6 +70,12 @@ namespace CakeShop_app
             {
                 case "ItemHome":
                     TitleFunction.Text = "Trang chủ";
+                    var screen = new UserControlTypes();
+                    screen.Handler += Categories;
+                    GridMain.Children.Add(screen);
+                    break;
+                case "ItemProduct":
+                    TitleFunction.Text = "Các sản phẩm";
                     usc = new UserControlHomeScreen();
                     GridMain.Children.Add(usc);
                     break;
@@ -78,6 +87,21 @@ namespace CakeShop_app
                 default:
                     break;
             }
+        }
+
+        private void Cart_Click_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            GridMain.Children.Clear();
+            GridMain.Children.Add( new UserControlCreateCakeBill(GridMain));
+        }
+        private void Categories(int CatID)
+        {
+            UserControl usc = null;
+            GridMain.Children.Clear();
+
+            TitleFunction.Text = "Các sản phẩm";
+            usc = new UserControlHomeScreen(CatID);
+            GridMain.Children.Add(usc);
         }
     }
 }
