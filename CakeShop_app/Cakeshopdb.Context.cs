@@ -26,6 +26,7 @@ namespace CakeShop_app
         }
     
         public virtual DbSet<Bill> Bills { get; set; }
+        public virtual DbSet<BillDetail> BillDetails { get; set; }
         public virtual DbSet<Cake> Cakes { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
     }

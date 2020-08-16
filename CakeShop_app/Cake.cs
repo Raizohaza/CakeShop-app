@@ -17,7 +17,7 @@ namespace CakeShop_app
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Cake()
         {
-            this.Bills = new HashSet<Bill>();
+            this.BillDetails = new HashSet<BillDetail>();
         }
     
         public int ID { get; set; }
@@ -28,7 +28,7 @@ namespace CakeShop_app
         public string Detail { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bill> Bills { get; set; }
+        public virtual ICollection<BillDetail> BillDetails { get; set; }
         public virtual Category Category { get; set; }
     }
 }

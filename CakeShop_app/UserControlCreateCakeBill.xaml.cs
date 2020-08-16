@@ -22,8 +22,8 @@ namespace CakeShop_app
     public partial class UserControlCreateCakeBill : UserControl
     {
         Grid main;
-        List<Bill> Billes;
-        public UserControlCreateCakeBill(Grid grid,List<Bill> bills)
+        List<BillDetail> Billes;
+        public UserControlCreateCakeBill(Grid grid,List<BillDetail> bills)
         {
             InitializeComponent();
             main = grid;
@@ -31,7 +31,7 @@ namespace CakeShop_app
             //Load();
         }
         
-        public UserControlCreateCakeBill(List<Bill> data)
+        public UserControlCreateCakeBill(List<BillDetail> data)
         {
             InitializeComponent();
             Billes= data;
@@ -49,12 +49,12 @@ namespace CakeShop_app
         }
         private CakeShop_dbEntities db = new CakeShop_dbEntities();
         
-        private void Refresh(Bill item)
-        {
-            db.Bills.Add(item);
-            db.SaveChanges();
-            var Bills = db.Cakes.ToList();
-            BillDTG.ItemsSource = Bills;
-        }
+        //private void Refresh(Bill item)
+        //{
+        //    db.Bills.Add(item);
+        //    db.SaveChanges();
+        //    var Bills = db.Cakes.ToList();
+        //    BillDTG.ItemsSource = Bills;
+        //}
     }
 }

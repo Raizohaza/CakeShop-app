@@ -20,10 +20,17 @@ namespace CakeShop_app
     /// </summary>
     public partial class MainWindow : Window
     {
+        
+        CakeShop_dbEntities db = new CakeShop_dbEntities();
         public MainWindow()
         {
+            Bill bill = new Bill();
             InitializeComponent();
+            db.Bills.Add(bill);
+            db.SaveChanges();
+            var d = db.Bills.ToList();
         }
+       
         private void btn_ButtonOpenMenu(object sender, RoutedEventArgs e)
         {
             ButtonCloseMenu.Visibility = Visibility.Visible;
@@ -36,6 +43,7 @@ namespace CakeShop_app
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+
             GridMain.Children.Clear();
             TitleFunction.Text = "Trang chủ";
             var screen = new UserControlTypes();
@@ -52,7 +60,6 @@ namespace CakeShop_app
 
         }
         private void btn_Demo(object sender, RoutedEventArgs e)
-
         {
 
         }
@@ -82,7 +89,7 @@ namespace CakeShop_app
                 case "ItemBill":
                     CakeShop_dbEntities db = new CakeShop_dbEntities();
                     TitleFunction.Text = "Thanh toán";
-                    var data = db.Bills.ToList();
+                    var data = db.BillDetails.ToList();
                     usc = new UserControlCreateCakeBill(GridMain,data);
                     GridMain.Children.Add(usc);
                     break;
@@ -94,9 +101,9 @@ namespace CakeShop_app
         private void Cart_Click_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             GridMain.Children.Clear();
-            CakeShop_dbEntities db = new CakeShop_dbEntities();
+            
             TitleFunction.Text = "Thanh toán";
-            var data = db.Bills.ToList();
+            var data = db.BillDetails.ToList();
             GridMain.Children.Add( new UserControlCreateCakeBill(GridMain,data));
         }
         private void Categories(int CatID)
@@ -107,6 +114,19 @@ namespace CakeShop_app
             TitleFunction.Text = "Các sản phẩm";
             usc = new UserControlHomeScreen(CatID);
             GridMain.Children.Add(usc);
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            var d = db.Bills.ToList();
+            foreach (var item in d)
+            {
+                if (item.Payed == false)
+                {
+                    db.Bills.Remove(item);
+                    db.SaveChanges();
+                }
+            }
         }
     }
 }

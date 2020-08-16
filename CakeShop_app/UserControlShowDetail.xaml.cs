@@ -24,7 +24,7 @@ namespace CakeShop_app
     public partial class UserControlShowDetail : UserControl
     {
         Cake _data = new Cake();
-        Bill Bill_std = new Bill();
+        BillDetail Bill_std = new BillDetail();
         public delegate void Save(int flags);
         public event Save Handler; 
         public UserControlShowDetail(Cake cake)
@@ -55,7 +55,7 @@ namespace CakeShop_app
             Cancel.Visibility = Visibility.Visible;
         }
 
-        public delegate void AddBill(Bill item);
+        public delegate void AddBill(BillDetail item);
         public event AddBill Handler_Bill;
         private void Button_CartsClick(object sender, RoutedEventArgs e)
         {
@@ -67,7 +67,6 @@ namespace CakeShop_app
                 Bill_std.Cake = _data;
                 Bill_std.Totality = Bill_std.Cake.Price * Bill_std.Quantity;
                 //string dateFormat = Convert.ToString(Row["Date"]);
-                Bill_std.Date = DateTime.Today;
                 Handler_Bill?.Invoke(Bill_std);
             }
         }

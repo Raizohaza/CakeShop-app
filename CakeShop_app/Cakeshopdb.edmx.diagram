@@ -4,10 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="205216f116a14093bd45db2e5ce7b92d" Name="Diagram1">
-        <EntityTypeShape EntityType="CakeShop_dbModel.Bill" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+      <Diagram DiagramId="9633e8c4a4ef4a38a04a208ef9370a7b" Name="Diagram1">
+        <EntityTypeShape EntityType="CakeShop_dbModel.Bill" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CakeShop_dbModel.BillDetail" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="CakeShop_dbModel.Cake" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="CakeShop_dbModel.Category" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="CakeShop_dbModel.FK_BillDetail_Bill" ManuallyRouted="false" />
         <AssociationConnector Association="CakeShop_dbModel.FK_Bill_Cake" ManuallyRouted="false" />
         <AssociationConnector Association="CakeShop_dbModel.FK_Cake_Category" ManuallyRouted="false" />
       </Diagram>

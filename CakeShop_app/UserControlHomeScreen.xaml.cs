@@ -70,9 +70,9 @@ namespace CakeShop_app
             }
         }
         
-        private void Bill_Status(Bill Bill_item)
+        private void Bill_Status(BillDetail Bill_item)
         {
-            var Dup_bill = from bill in db.Bills
+            var Dup_bill = from bill in db.BillDetails
                         where bill.CakeID == Bill_item.CakeID
                         select bill;
             var kt = Dup_bill.ToList();
@@ -83,7 +83,7 @@ namespace CakeShop_app
             }
             else
             {
-                db.Bills.Add(Bill_item);
+                db.BillDetails.Add(Bill_item);
             }
             db.SaveChanges();
         }
