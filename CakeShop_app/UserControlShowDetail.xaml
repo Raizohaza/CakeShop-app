@@ -10,6 +10,7 @@
         <local:RelativeToAsolutePathConverter x:Key="pathConverter"/>
     </UserControl.Resources>
     <Grid Background="White" Name="MainGrid">
+
         <Image Source="{Binding Image,Converter={StaticResource pathConverter}}" x:Name="RecipesAvatar" HorizontalAlignment="Left" Width="370" Margin="10,10,0,16.6" />
 
         <TextBlock  FontSize="30" Foreground="Black" x:Name="nameTextBox" Text="{Binding Name}" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Center" Width="405" Canvas.Top="296" Canvas.Left="23" RenderTransformOrigin="0.33,1.542" Margin="385,10,10,404.6"/>
@@ -21,6 +22,7 @@
         <TextBlock      FontSize="30" Foreground="Black" x:Name="DetalTextBox"      TextWrapping="WrapWithOverflow" TextAlignment="Justify" Text="{Binding Detail}"  HorizontalAlignment="Center" Width="305" Canvas.Top="296" Canvas.Left="23" Margin="385,141,110,10"/>
         <TextBox        FontSize="30" Foreground="Black" x:Name="DetailTextBox"     TextWrapping="WrapWithOverflow" TextAlignment="Justify" Text="{Binding Detail}"  HorizontalAlignment="Center" Width="305" Canvas.Top="296" Canvas.Left="23" Margin="385,141,110,10" Visibility="Hidden"/>
 
+        <TextBox x:Name="QuantityTextBox" Text="1" PreviewTextInput="NumberValidationTextBox" FontSize="20" HorizontalAlignment="Center" Width="50" Height="50" Foreground="Black" Margin="727,260,0,140" />
         <Button x:Name="CartsClick" Height="36" Width="109" Margin="0,315,23,0" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Content="Mua Hàng" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="Button_CartsClick"/>
         <Button x:Name="Modifiy" Height="36" Width="109" Margin="0,356,23,0" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Content="Chỉnh sửa" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="Modifiy_Click" RenderTransformOrigin="-0.394,0.639"/>
         <Button x:Name="Done" Visibility="Hidden" Height="36" Width="109" Margin="0,315,23,0" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Content="Done" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="Done_Click"/>

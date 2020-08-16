@@ -6,18 +6,9 @@
              xmlns:local="clr-namespace:CakeShop_app"
              mc:Ignorable="d" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
     <Grid x:Name="GridBill">
        
-        <materialDesign:Card Grid.Row="0">
-            <WrapPanel>
-                <ComboBox x:Name="DisplayNameCustomer" Loaded="loadCustomer" materialDesign:HintAssist.Hint="Tên khách hàng" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
-                <DatePicker x:Name="DateBill" Margin="5 7 5 5" materialDesign:HintAssist.Hint="Ngày mua" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-                <ComboBox x:Name="DisplayNameSale" Loaded="loadSale" materialDesign:HintAssist.Hint="Khuyến mãi" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
-                <ComboBox x:Name="DisplayNameTransport" Loaded="loadTransport" materialDesign:HintAssist.Hint="Vận chuyển" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
-
-            </WrapPanel>
-        </materialDesign:Card>
         <materialDesign:Card Grid.Row="1">
             <WrapPanel HorizontalAlignment="Center"/>
         </materialDesign:Card>
@@ -26,11 +17,11 @@
                 <DataGrid SelectionChanged="BillDTG_SelectionChanged"  Name="BillDTG" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" >
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="ID" Binding="{Binding ID}"/>
-                        <DataGridTextColumn Header="Sản Phẩm" Binding="{Binding Customer.DisplayName}"/>
-                        <DataGridTextColumn Header="Ngày Mua" Binding="{Binding DateBill}"/>
-                        <DataGridTextColumn Header="Giá" Binding="{Binding Sale.DisplayName}"/>
-                        <DataGridTextColumn Header="Số Lượng" Binding="{Binding Transport.DisplayName}"/>
-                        <DataGridTextColumn Header="Tổng" Binding="{Binding SumPrice}"/>
+                        <DataGridTextColumn Header="Sản Phẩm" Binding="{Binding Name}"/>
+                        <DataGridTextColumn Header="Ngày Mua" Binding="{Binding Date}"/>
+                        <DataGridTextColumn Header="Giá" Binding="{Binding Price}"/>
+                        <DataGridTextColumn Header="Số Lượng" Binding="{Binding Quanlity}"/>
+                        <DataGridTextColumn Header="Tổng" Binding="{Binding Totality}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </ScrollViewer>

@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,21 +24,19 @@ namespace CakeShop_app
     public partial class UserControlShowDetail : UserControl
     {
         Cake _data = new Cake();
-        Cake _dataold = new Cake();
-
+        Bill Bill_std = new Bill();
         public delegate void Save(int flags);
         public event Save Handler; 
         public UserControlShowDetail(Cake cake)
         {
             InitializeComponent();
-            _dataold = cake;
             _data = cake;
             MainGrid.DataContext = _data;
         }
+
         public UserControlShowDetail(Cake cake,int kt)
         {
             InitializeComponent();
-            _dataold = cake;
             _data = cake;
             MainGrid.DataContext = _data;
 
@@ -54,9 +55,22 @@ namespace CakeShop_app
             Cancel.Visibility = Visibility.Visible;
         }
 
+        public delegate void AddBill(Bill item);
+        public event AddBill Handler_Bill;
         private void Button_CartsClick(object sender, RoutedEventArgs e)
         {
-
+            if (QuantityTextBox.Text != "")
+            {
+                Bill_std.ID = 1;
+                Bill_std.CakeID = _data.ID;
+                Bill_std.Quantity = Int32.Parse(QuantityTextBox.Text);
+                var today = DateTime.Today.ToString("MM/dd/yyyy");
+                Bill_std.Cake = _data;
+                Bill_std.Totality = Bill_std.Cake.Price * Bill_std.Quantity;
+                //string dateFormat = Convert.ToString(Row["Date"]);
+                Bill_std.Date = DateTime.Today;
+                Handler_Bill?.Invoke(Bill_std);
+            }
         }
         #region Modify
         private void Modifiy_Click(object sender, RoutedEventArgs e)
@@ -115,6 +129,11 @@ namespace CakeShop_app
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             this.Visibility = Visibility.Collapsed;
+        }
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

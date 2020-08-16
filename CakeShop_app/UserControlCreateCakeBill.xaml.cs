@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,60 +28,30 @@ namespace CakeShop_app
             main = grid;
             //Load();
         }
-
-        public UserControlCreateCakeBill()
+        List<Bill> Billes;
+        public UserControlCreateCakeBill(List<Bill> data)
         {
+            InitializeComponent();
+            Billes= data;
         }
 
-        private void Load()
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            //BillDTG.ItemsSource = DataProvider.Ins.DB.Bills.ToList();
+            BillDTG.ItemsSource = Billes;
         }
-        private void setNull()
-        {
-            DisplayNameCustomer.SelectedIndex = 1;
-            DisplayNameSale.SelectedIndex = 1;
-            DisplayNameTransport.SelectedIndex = 1;
-        }
-        bool checkInput()
-        {
-            if (DisplayNameCustomer.SelectedIndex == -1 || DateBill.SelectedDate.HasValue == false)
-            {
-                return false;
-            }
-            return true;
-        }
-        private void btn_Add(object sender, RoutedEventArgs e)
-        {
 
-        }
-        private void btn_Del(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void btn_Edit(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void btn_BillDetail(object sender, RoutedEventArgs e)
-        {
-
-        }
         private void BillDTG_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+             
         }
-        private void loadSale(object sender, RoutedEventArgs e)
+        private CakeShop_dbEntities db = new CakeShop_dbEntities();
+        
+        private void Refresh(Bill item)
         {
-
-        }
-        private void loadTransport(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void loadCustomer(object sender, RoutedEventArgs e)
-        {
-
+            db.Bills.Add(item);
+            db.SaveChanges();
+            var Bills = db.Cakes.ToList();
+            BillDTG.ItemsSource = Bills;
         }
     }
 }
