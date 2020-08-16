@@ -40,6 +40,7 @@ namespace CakeShop_app
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             BillDTG.ItemsSource = Billes;
+            var cakes = new List<Cake>();
         }
 
         private void BillDTG_SelectionChanged(object sender, SelectionChangedEventArgs e)

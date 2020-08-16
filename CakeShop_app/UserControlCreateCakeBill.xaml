@@ -13,18 +13,19 @@
             <WrapPanel HorizontalAlignment="Center"/>
         </materialDesign:Card>
         <materialDesign:Card  Margin="5" VerticalAlignment="Stretch">
-            <ScrollViewer VerticalScrollBarVisibility="Auto">
-                <DataGrid SelectionChanged="BillDTG_SelectionChanged"  Name="BillDTG" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" >
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,0,300,0">
+                <DataGrid SelectionChanged="BillDTG_SelectionChanged"  Name="BillDTG" x:FieldModifier="public" AutoGenerateColumns="False" >
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Binding="{Binding ID}"/>
-                        <DataGridTextColumn Header="Sản Phẩm" Binding="{Binding Name}"/>
-                        <DataGridTextColumn Header="Ngày Mua" Binding="{Binding Date}"/>
-                        <DataGridTextColumn Header="Giá" Binding="{Binding Price}"/>
-                        <DataGridTextColumn Header="Số Lượng" Binding="{Binding Quanlity}"/>
-                        <DataGridTextColumn Header="Tổng" Binding="{Binding Totality}"/>
+                        <DataGridTextColumn Header="ID" Binding="{Binding catid}" Width="auto"/>
+                        <DataGridTextColumn Header="Sản Phẩm" x:Name="NameCake" Binding="{Binding Cake.Name}" Width="auto"/>
+                        <DataGridTextColumn Header="Ngày Mua" Binding="{Binding Date}" Width="auto"/>
+                        <DataGridTextColumn Header="Giá" Binding="{Binding Cake.Price}" Width="auto"/>
+                        <DataGridTextColumn Header="Số Lượng" Binding="{Binding Quantity}" Width="auto"/>
+                        <DataGridTextColumn Header="Tổng" Binding="{Binding Totality}" Width="auto"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </ScrollViewer>
+            
         </materialDesign:Card>
     </Grid>
 </UserControl>
