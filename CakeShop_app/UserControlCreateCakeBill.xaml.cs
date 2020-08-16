@@ -22,13 +22,15 @@ namespace CakeShop_app
     public partial class UserControlCreateCakeBill : UserControl
     {
         Grid main;
-        public UserControlCreateCakeBill(Grid grid)
+        List<Bill> Billes;
+        public UserControlCreateCakeBill(Grid grid,List<Bill> bills)
         {
             InitializeComponent();
             main = grid;
+            Billes = bills;
             //Load();
         }
-        List<Bill> Billes;
+        
         public UserControlCreateCakeBill(List<Bill> data)
         {
             InitializeComponent();

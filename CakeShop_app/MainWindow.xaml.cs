@@ -80,8 +80,10 @@ namespace CakeShop_app
                     GridMain.Children.Add(usc);
                     break;
                 case "ItemBill":
+                    CakeShop_dbEntities db = new CakeShop_dbEntities();
                     TitleFunction.Text = "Thanh toán";
-                    usc = new UserControlCreateCakeBill(GridMain);
+                    var data = db.Bills.ToList();
+                    usc = new UserControlCreateCakeBill(GridMain,data);
                     GridMain.Children.Add(usc);
                     break;
                 default:
@@ -92,7 +94,10 @@ namespace CakeShop_app
         private void Cart_Click_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             GridMain.Children.Clear();
-            GridMain.Children.Add( new UserControlCreateCakeBill(GridMain));
+            CakeShop_dbEntities db = new CakeShop_dbEntities();
+            TitleFunction.Text = "Thanh toán";
+            var data = db.Bills.ToList();
+            GridMain.Children.Add( new UserControlCreateCakeBill(GridMain,data));
         }
         private void Categories(int CatID)
         {

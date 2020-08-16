@@ -72,7 +72,19 @@ namespace CakeShop_app
         
         private void Bill_Status(Bill Bill_item)
         {
-            db.Bills.Add(Bill_item);
+            var Dup_bill = from bill in db.Bills
+                        where bill.CakeID == Bill_item.CakeID
+                        select bill;
+            var kt = Dup_bill.ToList();
+            if (kt.Count > 0)
+            {
+                kt[0].Quantity += Bill_item.Quantity;
+                kt[0].Totality =kt[0].Quantity * Bill_item.Cake.Price;
+            }
+            else
+            {
+                db.Bills.Add(Bill_item);
+            }
             db.SaveChanges();
         }
 

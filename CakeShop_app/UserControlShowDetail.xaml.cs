@@ -61,7 +61,6 @@ namespace CakeShop_app
         {
             if (QuantityTextBox.Text != "")
             {
-                Bill_std.ID = 1;
                 Bill_std.CakeID = _data.ID;
                 Bill_std.Quantity = Int32.Parse(QuantityTextBox.Text);
                 var today = DateTime.Today.ToString("MM/dd/yyyy");
