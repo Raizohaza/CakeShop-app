@@ -25,12 +25,22 @@
                                 <MenuItem Header="Edit" Click="EditItem_Click"/>
                             </ContextMenu>
                         </StackPanel.ContextMenu>
-                        <Image Source="{Binding Image,Converter={StaticResource pathConverter}}" Width="100" Height="100"/>
-                        <TextBlock Text="{Binding Name}" Width="100" TextWrapping="WrapWithOverflow" Height="30" TextAlignment="Center"/>
+                        <Image Source="{Binding Image,Converter={StaticResource pathConverter}}" Width="170" Height="170"/>
+                        <TextBlock Text="{Binding Name}" Width="100" TextWrapping="WrapWithOverflow" Height="30" TextAlignment="Center">
+                            <TextBlock.Foreground>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#000000" Offset="0"/>
+                                    <GradientStop Color="#ff0022" Offset="1"/>
+                                </LinearGradientBrush>
+                            </TextBlock.Foreground>
+                        </TextBlock>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Content="+" Click="AddButton_Click" VerticalAlignment="Center" HorizontalAlignment="Right" Width="50" Margin="0,380,40,38"/>
+        <Button Content="Add" Click="AddButton_Click" VerticalAlignment="Center" HorizontalAlignment="Right" Width="60" Margin="0,380,30,38"/>
+        <Button x:Name="Next_button" Content="+" VerticalAlignment="Center" Click="Next_button_Click" Width="50" Margin="470,408,280,10"/>
+        <Button x:Name="Prev_button" Content="-" VerticalAlignment="Center" Click="Prev_button_Click"  Width="50" Margin="295,408,455,10"/>
+        <TextBlock x:Name="_Page_Number" Text="{Binding}" FontSize="20" FontWeight="Medium" Margin="350,408,335,10"/>
     </Grid>
 </UserControl>

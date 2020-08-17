@@ -13,14 +13,49 @@
 
         <Image Source="{Binding Image,Converter={StaticResource pathConverter}}" x:Name="RecipesAvatar" HorizontalAlignment="Left" Width="370" Margin="10,10,0,16.6" />
 
-        <TextBlock  FontSize="30" Foreground="Black" x:Name="nameTextBox" Text="{Binding Name}" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Center" Width="405" Canvas.Top="296" Canvas.Left="23" RenderTransformOrigin="0.33,1.542" Margin="385,10,10,404.6"/>
+        <TextBlock  FontSize="30"  x:Name="nameTextBox" Text="{Binding Name}" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Center" Width="405" Canvas.Top="296" Canvas.Left="23" RenderTransformOrigin="0.33,1.542" Margin="385,10,10,404.6">
+            <TextBlock.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#f51a02" Offset="0"/>
+                    <GradientStop Color="#f502f1" Offset="1"/>
+
+                </LinearGradientBrush>
+            </TextBlock.Foreground>
+        </TextBlock>
         <TextBox FontSize="30" Visibility="Hidden" Foreground="Black" x:Name="nameText" Text="{Binding Name}" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Center" Width="405" Canvas.Top="296" Canvas.Left="23" RenderTransformOrigin="0.33,1.542" Margin="385,10,10,404.6"/>
 
         <TextBlock FontSize="30"  x:Name="PriceTextBox" Text="{Binding Price}" FontStyle="Italic" FontWeight="Thin" VerticalAlignment="Center" HorizontalAlignment="Center" Width="405" Canvas.Top="296" Canvas.Left="23" RenderTransformOrigin="0.33,1.542" Margin="385,70,10,339.6" Foreground="Black"/>
         <TextBox FontSize="30" Visibility="Hidden" x:Name="PriceText" Text="{Binding Price}" FontStyle="Italic" FontWeight="Thin" VerticalAlignment="Center" HorizontalAlignment="Center" Width="405" Canvas.Top="296" Canvas.Left="23" RenderTransformOrigin="0.33,1.542" Margin="385,70,10,339.6" Foreground="Black"/>
 
-        <TextBlock      FontSize="30" Foreground="Black" x:Name="DetalTextBox"      TextWrapping="WrapWithOverflow" TextAlignment="Justify" Text="{Binding Detail}"  HorizontalAlignment="Center" Width="305" Canvas.Top="296" Canvas.Left="23" Margin="385,141,110,10"/>
-        <TextBox        FontSize="30" Foreground="Black" x:Name="DetailTextBox"     TextWrapping="WrapWithOverflow" TextAlignment="Justify" Text="{Binding Detail}"  HorizontalAlignment="Center" Width="305" Canvas.Top="296" Canvas.Left="23" Margin="385,141,110,10" Visibility="Hidden"/>
+        <TextBlock      FontSize="20" x:Name="DetalTextBox"      TextWrapping="WrapWithOverflow" TextAlignment="Justify" Text="{Binding Detail}"  HorizontalAlignment="Center" Width="305" Canvas.Top="296" Canvas.Left="23" Margin="385,141,110,10">
+            <TextBlock.Foreground>
+                
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#000000" Offset="0"/>
+                        <GradientStop Color="#ffffff" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBlock.Foreground>
+        </TextBlock>
+        <TextBox        FontSize="20" Foreground="Black" x:Name="DetailTextBox"     TextWrapping="WrapWithOverflow" TextAlignment="Justify" Text="{Binding Detail}"  HorizontalAlignment="Center" Width="305" Canvas.Top="296" Canvas.Left="23" Margin="385,141,110,10" Visibility="Hidden">
+            <TextBox.Effect>
+                <DropShadowEffect ShadowDepth="4"
+                          Direction="330"
+                          Color="Black"
+                          Opacity="0.5"
+                          BlurRadius="4"
+                           />
+            </TextBox.Effect>
+            <TextBox.FocusVisualStyle>
+                <Style>
+                    <Setter Property="Control.Template">
+                        <Setter.Value>
+                            <ControlTemplate/>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TextBox.FocusVisualStyle>
+
+        </TextBox>
 
         <TextBox x:Name="QuantityTextBox" Text="1" PreviewTextInput="NumberValidationTextBox" FontSize="20" HorizontalAlignment="Center" Width="50" Height="50" Foreground="Black" Margin="727,260,0,140" />
         <Button x:Name="CartsClick" Height="36" Width="109" Margin="0,315,23,0" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Content="Mua Hàng" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="Button_CartsClick"/>

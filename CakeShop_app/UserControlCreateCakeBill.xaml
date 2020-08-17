@@ -53,12 +53,12 @@
 
         <materialDesign:Card Grid.Column="1" Margin="5">
             <StackPanel>
-                <TextBlock Text="Total carts: " FontSize="20" FontWeight="Bold" Foreground="MidnightBlue"/>
+                <TextBlock Text="Total carts: " FontSize="20" FontWeight="Medium" Foreground="MidnightBlue"/>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Tạm tính: " FontSize="15" FontWeight="Bold" Foreground="MidnightBlue"/>
+                    <TextBlock Text="Tạm tính: " FontSize="15" FontWeight="Medium" Foreground="MidnightBlue"/>
                     <TextBlock x:Name="TempBillTextBlock" FontSize="15"/>
                 </StackPanel>
-                <TextBlock Text="Tổng tiền thanh toán: " FontSize="20" FontWeight="Bold" Foreground="MidnightBlue"/>
+                <TextBlock Text="Tổng tiền thanh toán: " FontSize="20" FontWeight="Medium" Foreground="MidnightBlue"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock x:Name="TotalCartTextBox" FontSize="15"/>
                     <Button Background="LightPink" Click="TotalCarts_Click">
