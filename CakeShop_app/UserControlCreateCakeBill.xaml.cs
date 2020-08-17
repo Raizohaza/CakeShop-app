@@ -23,15 +23,16 @@ namespace CakeShop_app
     {
         Grid main;
         List<BillDetail> Billes;
-        CakeShop_dbEntities db = new CakeShop_dbEntities();
+        public delegate void Save(int flags);
+        public event Save Handler;
         public UserControlCreateCakeBill(Grid grid,Bill bills)
         {
             InitializeComponent();
             main = grid;
             Billes = bills.BillDetails.ToList() as List<BillDetail>;
-
-            
+            Refresh();
         }
+
         
         public UserControlCreateCakeBill(List<BillDetail> data)
         {
@@ -42,55 +43,89 @@ namespace CakeShop_app
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             BillDTG.ItemsSource = Billes;
-            var cakes = new List<Cake>();
         }
 
-        private void BillDTG_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-             
-        }
+        
 
-
-        private void UpQuantity_Click(object sender, RoutedEventArgs e)
+        private void Up_MouseLeftButtonUp(object sender, RoutedEventArgs e)
         {
-            var item = BillDTG.SelectedItem as BillDetail;
-            item.Quantity += 1;
+            CakeShop_dbEntities db = new CakeShop_dbEntities();
+            var dtbill = db.BillDetails.ToList();
+            var selectedItem = BillDTG.SelectedItem as BillDetail;
+            foreach (var item in dtbill)
+            {
+                if (item.CakeID == selectedItem.CakeID && item.IDBill == selectedItem.IDBill && selectedItem!=null)
+                    item.Quantity += 1;
+            }
             db.SaveChanges();
+            Refresh();
         }
-        private void DownQuantity_Click(object sender, RoutedEventArgs e)
+        private void Down_MouseLeftButtonUp(object sender, RoutedEventArgs e)
         {
-
+            CakeShop_dbEntities db = new CakeShop_dbEntities();
+            var dtbill = db.BillDetails.ToList();
+            var selectedItem = BillDTG.SelectedItem as BillDetail;
+            foreach (var item in dtbill)
+            {
+                if (item.CakeID == selectedItem.CakeID && item.IDBill == selectedItem.IDBill && selectedItem != null && item.Quantity > 0)
+                    item.Quantity -= 1;
+            }
+            db.SaveChanges();
+            Refresh();
         }
         private void DeleteBill_Click(object sender, RoutedEventArgs e)
         {
             //var item = BillDTG.SelectedItem as BillDetail;
-            //db.BillDetails.Remove(item);
+            //
             //db.SaveChanges();
 
             ////refresh
             //var Bills = db.BillDetails.ToList();
             //BillDTG.ItemsSource = Bills;
+            CakeShop_dbEntities db = new CakeShop_dbEntities();
+            var dtbill = db.BillDetails.ToList();
+            var selectedItem = BillDTG.SelectedItem as BillDetail;
+            foreach (var item in dtbill)
+            {
+                if (item.CakeID == selectedItem.CakeID && item.IDBill == selectedItem.IDBill && selectedItem != null)
+                    db.BillDetails.Remove(item);
+            }
+            db.SaveChanges();
+            Refresh();
         }
         private void TotalCarts_Click(object sender, RoutedEventArgs e)
         {
-
+            CakeShop_dbEntities db = new CakeShop_dbEntities();
+            var bills = db.Bills.ToList();
+            var currentBill = bills[bills.Count - 1];
+            currentBill.Payed = true;
+            Handler?.Invoke(1);
+            this.Visibility = Visibility.Collapsed;
         }
 
-        private void PackIcon_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+
+        private void Refresh()
         {
+            var db = new CakeShop_dbEntities();
+            var bills = db.Bills.ToList();
+            var currentBill = bills[bills.Count - 1];
+            var sum = 0;
+            foreach (var item2 in currentBill.BillDetails)
+            {
+                if (item2.Totality != null)
+                {
+                    sum += (int)item2.Totality;
+                }
+
+            }
+            currentBill.Totality = sum;
+            TotalCartTextBlock.Text = sum.ToString() +"$";
+            var billFillter = from item in db.BillDetails
+                               where item.IDBill == currentBill.ID
+                               select item;
+            var data = billFillter.ToList();
+            BillDTG.ItemsSource = data;
 
         }
-
-        private void PackIcon_MouseLeftButtonUp_1(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-        //private void Refresh(Bill item)
-        //{
-        //    db.Bills.Add(item);
-        //    db.SaveChanges();
-        //    var Bills = db.Cakes.ToList();
-        //    BillDTG.ItemsSource = Bills;
-        //}
     }
 }
