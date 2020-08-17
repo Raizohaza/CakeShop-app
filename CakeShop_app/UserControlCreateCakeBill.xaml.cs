@@ -55,7 +55,10 @@ namespace CakeShop_app
             foreach (var item in dtbill)
             {
                 if (item.CakeID == selectedItem.CakeID && item.IDBill == selectedItem.IDBill && selectedItem!=null)
+                {
                     item.Quantity += 1;
+                    item.Totality = item.Quantity * item.Cake.Price;
+                }
             }
             db.SaveChanges();
             Refresh();
@@ -68,7 +71,10 @@ namespace CakeShop_app
             foreach (var item in dtbill)
             {
                 if (item.CakeID == selectedItem.CakeID && item.IDBill == selectedItem.IDBill && selectedItem != null && item.Quantity > 0)
+                {
                     item.Quantity -= 1;
+                    item.Totality = item.Quantity * item.Cake.Price;
+                }
             }
             db.SaveChanges();
             Refresh();

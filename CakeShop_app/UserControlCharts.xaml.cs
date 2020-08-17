@@ -28,7 +28,7 @@ namespace CakeShop_app
             InitializeComponent();
             var db = new CakeShop_dbEntities();
             var bills = db.Bills.ToList();
-
+            var billdetails = db.BillDetails.ToList();
             var MonthRevenue = new List<int>()
             {
                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -59,14 +59,51 @@ namespace CakeShop_app
             {
                 var data = new ColumnSeries() { Title = $"Tháng {i + 1}", Values = new ChartValues<int> { MonthRevenue[i] } };
                 columnChart.Add(data);
-                //columnChart.Add(               );
             }
             
            CartesianChart.Series = columnChart;
+
+            var PieChart = new SeriesCollection();
+            var CakeLoai = new List<int>()
+            {
+                0, 0, 0, 0, 0, 
+            };
+            foreach (var item in billdetails)
+            {
+                int catID = item.Cake.CatID != null ? (int)item.Cake.CatID : 0;
+                if (item.Totality != null)
+                {
+                    CakeLoai[catID-1] += (int)item.Totality;
+                }
+            }
+            var category = db.Categories.ToList();
+            for (int i = 0; i < CakeLoai.Count; i++)
+            {
+                var data = new PieSeries() { Title = $"{category[i].CatName}", Values = new ChartValues<int> {CakeLoai[i]} };
+                PieChart.Add(data);
+            }
+            PieChartBabyIReal.Series = PieChart;
         }
 
-        private void CartesianChart_DataClick(object sender, LiveCharts.ChartPoint chartPoint)
+        private void CartesianChart_DataClick(object sender, ChartPoint chartPoint)
         {
+
+        }
+        int flag = 0;
+        private void PieChart_click(object sender, RoutedEventArgs e)
+        {
+            if (flag == 0)
+            {
+                CartesianChart.Visibility = Visibility.Hidden;
+                PieChartBabyIReal.Visibility = Visibility.Visible;
+                flag = 1;
+            }
+            else
+            {
+                flag = 0;
+                CartesianChart.Visibility = Visibility.Visible;
+                PieChartBabyIReal.Visibility = Visibility.Hidden;
+            }
 
         }
     }
