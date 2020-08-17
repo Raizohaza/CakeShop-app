@@ -143,6 +143,7 @@ namespace CakeShop_app
                     db.SaveChanges();
                 }
             }
+            Application.Current.Shutdown();
         }
     }
 }
