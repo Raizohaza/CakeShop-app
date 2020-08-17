@@ -23,6 +23,7 @@ namespace CakeShop_app
     {
         Grid main;
         List<BillDetail> Billes;
+        CakeShop_dbEntities db = new CakeShop_dbEntities();
         public UserControlCreateCakeBill(Grid grid,Bill bills)
         {
             InitializeComponent();
@@ -48,7 +49,42 @@ namespace CakeShop_app
         {
              
         }
-        
+
+
+        private void UpQuantity_Click(object sender, RoutedEventArgs e)
+        {
+            var item = BillDTG.SelectedItem as BillDetail;
+            item.Quantity += 1;
+            db.SaveChanges();
+        }
+        private void DownQuantity_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void DeleteBill_Click(object sender, RoutedEventArgs e)
+        {
+            //var item = BillDTG.SelectedItem as BillDetail;
+            //db.BillDetails.Remove(item);
+            //db.SaveChanges();
+
+            ////refresh
+            //var Bills = db.BillDetails.ToList();
+            //BillDTG.ItemsSource = Bills;
+        }
+        private void TotalCarts_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PackIcon_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void PackIcon_MouseLeftButtonUp_1(object sender, MouseButtonEventArgs e)
+        {
+
+        }
         //private void Refresh(Bill item)
         //{
         //    db.Bills.Add(item);
