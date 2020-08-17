@@ -59,6 +59,8 @@ namespace CakeShop_app
         public event AddBill Handler_Bill;
         private void Button_CartsClick(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult tempp = MessageBox.Show("Thêm vào giỏ thành công", "Thông báo");
+
             if (QuantityTextBox.Text != "")
             {
                 Bill_std.CakeID = _data.ID;
