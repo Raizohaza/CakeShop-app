@@ -105,6 +105,7 @@ namespace CakeShop_app
             var bills = db.Bills.ToList();
             var currentBill = bills[bills.Count - 1];
             currentBill.Payed = true;
+            db.SaveChanges();
             Handler?.Invoke(1);
             this.Visibility = Visibility.Collapsed;
         }

@@ -8,10 +8,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="White">
-        <lvc:CartesianChart  Series="{Binding columnChart}" Name="CartesianChart"  LegendLocation="Right" DataClick="CartesianChart_DataClick" Height="auto" Width="698" Canvas.Left="250" Canvas.Top="30">
+        <lvc:CartesianChart Foreground="Black" Series="{Binding columnChart}" Name="CartesianChart"  LegendLocation="Right" DataClick="CartesianChart_DataClick" Height="auto" Width="698" Canvas.Left="250" Canvas.Top="30">
 
         </lvc:CartesianChart>
-        <lvc:PieChart Name="PieChartBabyIReal" Visibility="Hidden" LegendLocation="Right" Height="auto" Width="698" Canvas.Left="250" Canvas.Top="30"/>
+        <lvc:PieChart Foreground="Black" Name="PieChartBabyIReal" Visibility="Hidden" LegendLocation="Right" Height="auto" Width="698" Canvas.Left="250" Canvas.Top="30"/>
         <Button Click="PieChart_click" Height="Auto" Margin="690,10,10,403" Background="MidnightBlue" Content="ChartChange"/>
     </Grid>
 </UserControl>

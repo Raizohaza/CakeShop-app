@@ -49,7 +49,7 @@ namespace CakeShop_app
                 item.Totality = sum;
                 if (item.Totality != null)
                 {
-                    MonthRevenue[MM] += (int)item.Totality;
+                    MonthRevenue[MM-1] += (int)item.Totality;
                 }
 
             }
