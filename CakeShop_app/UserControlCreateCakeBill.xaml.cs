@@ -27,8 +27,10 @@ namespace CakeShop_app
         {
             InitializeComponent();
             main = grid;
-            Billes = bills.BillDetails as List<BillDetail>;
-            //Load();
+            Billes = bills.BillDetails.ToList() as List<BillDetail>;
+
+            var date = bills.Date.ToString().Split('/');
+            var MM = Int32.Parse(date[1]);
         }
         
         public UserControlCreateCakeBill(List<BillDetail> data)
@@ -47,7 +49,6 @@ namespace CakeShop_app
         {
              
         }
-        private CakeShop_dbEntities db = new CakeShop_dbEntities();
         
         //private void Refresh(Bill item)
         //{
