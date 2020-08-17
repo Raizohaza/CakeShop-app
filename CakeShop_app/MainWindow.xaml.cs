@@ -54,21 +54,32 @@ namespace CakeShop_app
         }
         private void BillDone(int flags)
         {
+
             if(flags == 1)
             {
-                CakeShop_dbEntities db = new CakeShop_dbEntities();
-                Bill bill = new Bill();
-                bill.Date = DateTime.Now;
-                bill.Payed = false;
-                InitializeComponent();
-                db.Bills.Add(bill);
-                db.SaveChanges();
+                MessageBoxResult result = MessageBox.Show("Thanh toán thành công. Bạn có muốn tiếp tục mua sắm???",
+"Confirmation", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+                    CakeShop_dbEntities db = new CakeShop_dbEntities();
+                    Bill bill = new Bill();
+                    bill.Date = DateTime.Now;
+                    bill.Payed = false;
+                    InitializeComponent();
+                    db.Bills.Add(bill);
+                    db.SaveChanges();
 
-                GridMain.Children.Clear();
-                TitleFunction.Text = "Trang chủ";
-                var screen = new UserControlTypes();
-                screen.Handler += Categories;
-                GridMain.Children.Add(screen);
+                    GridMain.Children.Clear();
+                    TitleFunction.Text = "Trang chủ";
+                    var screen = new UserControlTypes();
+                    screen.Handler += Categories;
+                    GridMain.Children.Add(screen);
+                }             
+                else
+                {
+                    this.Close(); 
+                }
+                
             }    
         }
         private void btn_Aboutme(object sender, RoutedEventArgs e)

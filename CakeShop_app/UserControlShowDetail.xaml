@@ -27,14 +27,14 @@
         <TextBlock FontSize="30"  x:Name="PriceTextBox" Text="{Binding Price}" FontStyle="Italic" FontWeight="Thin" VerticalAlignment="Center" HorizontalAlignment="Center" Width="405" Canvas.Top="296" Canvas.Left="23" RenderTransformOrigin="0.33,1.542" Margin="385,70,10,339.6" Foreground="Black"/>
         <TextBox FontSize="30" Visibility="Hidden" x:Name="PriceText" Text="{Binding Price}" FontStyle="Italic" FontWeight="Thin" VerticalAlignment="Center" HorizontalAlignment="Center" Width="405" Canvas.Top="296" Canvas.Left="23" RenderTransformOrigin="0.33,1.542" Margin="385,70,10,339.6" Foreground="Black"/>
 
-        <TextBlock      FontSize="20" x:Name="DetalTextBox"      TextWrapping="WrapWithOverflow" TextAlignment="Justify" Text="{Binding Detail}"  HorizontalAlignment="Center" Width="305" Canvas.Top="296" Canvas.Left="23" Margin="385,141,110,10">
+        <TextBlock      FontSize="20" x:Name="DetalTextBox"      TextWrapping="WrapWithOverflow" TextAlignment="Justify" Text="{Binding Detail}"  HorizontalAlignment="Center" Width="278" Canvas.Top="296" Canvas.Left="23" Margin="385,141,137,17">
             <TextBlock.Foreground>
-                
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#000000" Offset="0"/>
-                        <GradientStop Color="#ffffff" Offset="1"/>
-                    </LinearGradientBrush>
-                </TextBlock.Foreground>
+
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#000000" Offset="0"/>
+                    <GradientStop Color="#ffffff" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBlock.Foreground>
         </TextBlock>
         <TextBox        FontSize="20" Foreground="Black" x:Name="DetailTextBox"     TextWrapping="WrapWithOverflow" TextAlignment="Justify" Text="{Binding Detail}"  HorizontalAlignment="Center" Width="305" Canvas.Top="296" Canvas.Left="23" Margin="385,141,110,10" Visibility="Hidden">
             <TextBox.Effect>
@@ -57,7 +57,7 @@
 
         </TextBox>
 
-        <TextBox x:Name="QuantityTextBox" Text="1" PreviewTextInput="NumberValidationTextBox" FontSize="20" HorizontalAlignment="Center" Width="50" Height="50" Foreground="Black" Margin="727,260,0,140" />
+        <TextBox x:Name="QuantityTextBox" Text="1" PreviewTextInput="NumberValidationTextBox" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center" Width="46" Height="30" Foreground="Black" Margin="0,260,59,160" />
         <Button x:Name="CartsClick" Height="36" Width="109" Margin="0,315,23,0" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Content="Mua Hàng" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="Button_CartsClick"/>
         <Button x:Name="Modifiy" Height="36" Width="109" Margin="0,356,23,0" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Content="Chỉnh sửa" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="Modifiy_Click" RenderTransformOrigin="-0.394,0.639"/>
         <Button x:Name="Done" Visibility="Hidden" Height="36" Width="109" Margin="0,315,23,0" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Content="Done" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="Done_Click"/>
