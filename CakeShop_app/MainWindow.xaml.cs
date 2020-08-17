@@ -47,7 +47,7 @@ namespace CakeShop_app
         {
 
             GridMain.Children.Clear();
-            TitleFunction.Text = "Trang chủ";
+            TitleFunction.Text = "TCH's Shop";
             var screen = new UserControlTypes();
             screen.Handler += Categories;
             GridMain.Children.Add(screen);
@@ -78,7 +78,7 @@ namespace CakeShop_app
             switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
             {
                 case "ItemHome":
-                    TitleFunction.Text = "Trang chủ";
+                    TitleFunction.Text = "TCH's Shop";
                     var screen = new UserControlTypes();
                     screen.Handler += Categories;
                     GridMain.Children.Add(screen);

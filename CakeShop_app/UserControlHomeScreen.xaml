@@ -38,9 +38,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Content="Add" Click="AddButton_Click" VerticalAlignment="Center" HorizontalAlignment="Right" Width="60" Margin="0,380,30,38"/>
-        <Button x:Name="Next_button" Content="+" VerticalAlignment="Center" Click="Next_button_Click" Width="50" Margin="470,408,280,10"/>
-        <Button x:Name="Prev_button" Content="-" VerticalAlignment="Center" Click="Prev_button_Click"  Width="50" Margin="295,408,455,10"/>
-        <TextBlock x:Name="_Page_Number" Text="{Binding}" FontSize="20" FontWeight="Medium" Margin="350,408,335,10"/>
+        <Button Content="+" Click="AddButton_Click" VerticalAlignment="Center" HorizontalAlignment="Right" Width="60" Margin="0,380,30,38"/>
     </Grid>
 </UserControl>

@@ -37,15 +37,11 @@ namespace CakeShop_app
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             var Cakes = db.Cakes.ToList();
-            _Page_Number.Text = "1";
-            info.CurrentPage = 1;
-            info.RowsPerPage = 10;
-            info.Count = Cakes.Count;
-            info.TotalPages = (info.Count / info.RowsPerPage) +
-                (info.Count % info.RowsPerPage == 0 ? 0 : 1);
+       
             if (Category == 0)
             {
-                HomeListView.ItemsSource = Cakes.Take(info.RowsPerPage);
+             
+                HomeListView.ItemsSource = Cakes;
                 return;
             }
 
@@ -53,7 +49,7 @@ namespace CakeShop_app
                                where cake.CatID == Category
                                select cake;
             var data = cakeFillered.ToList();
-            HomeListView.ItemsSource = data.Take(info.RowsPerPage);
+            HomeListView.ItemsSource = data;
 
            
         }
@@ -142,61 +138,10 @@ namespace CakeShop_app
             db.SaveChanges();
             var Cakes = db.Cakes.ToList();
             HomeListView.ItemsSource = Cakes;
-        }
+        }     
 
-        PagingInfo info = new PagingInfo();
-        class PagingInfo : INotifyPropertyChanged
-        {
-            public int TotalPages { get; set; }
-
-            private int _currentPage = 0;
-            public int CurrentPage
-            {
-                get => _currentPage;
-                set
-                {
-                    _currentPage = value;
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("CurrentPage"));
-                }
-            }
-          
-
-            public int Count { get; set; }
-            public int RowsPerPage { get; set; }
-
-            public event PropertyChangedEventHandler PropertyChanged;
-        }
-        private void Next_button_Click(object sender, RoutedEventArgs e)
-        {
-            var Cakes = db.Cakes.ToList();
-            if (info.CurrentPage < info.TotalPages)
-            {
-                info.CurrentPage++;
-                HomeListView.ItemsSource =
-                Cakes
-                    .Skip((info.CurrentPage - 1) * info.RowsPerPage)
-                    .Take(info.RowsPerPage);
-                _Page_Number.Text = info.CurrentPage.ToString();
-            }
+       
             
-        }
-
-        private void Prev_button_Click(object sender, RoutedEventArgs e)
-        {
-            var Cakes = db.Cakes.ToList();
-            if (info.CurrentPage <= info.TotalPages)
-            {
-                info.CurrentPage--;
-                HomeListView.ItemsSource =
-                Cakes
-                    .Skip((info.CurrentPage - 1) * info.RowsPerPage)
-                    .Take(info.RowsPerPage);
-                if (info.CurrentPage <= 1)
-                {
-                    info.CurrentPage = 1;
-                }
-                _Page_Number.Text = info.CurrentPage.ToString();
-            }
-        }
+      
     }
 }
