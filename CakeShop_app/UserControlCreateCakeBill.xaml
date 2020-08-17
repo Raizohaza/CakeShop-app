@@ -19,7 +19,8 @@
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <DataGrid SelectionChanged="BillDTG_SelectionChanged"  Name="BillDTG" x:FieldModifier="public" AutoGenerateColumns="False" >
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Binding="{Binding catid}" Width="auto"/>
+                        <DataGridTextColumn Width="auto">
+                        </DataGridTextColumn>
                         <DataGridTextColumn Header="Sản Phẩm" x:Name="NameCake" Binding="{Binding Cake.Name}" Width="auto"/>
                         <DataGridTextColumn Header="Ngày Mua" Binding="{Binding Date}" Width="auto"/>
                         <DataGridTextColumn Header="Giá" Binding="{Binding Cake.Price}" Width="auto"/>
@@ -33,7 +34,20 @@
 
         <materialDesign:Card Grid.Column="1" Margin="5">
             <StackPanel>
-                <TextBlock/>
+                <TextBlock Text="Total carts: " FontSize="20" FontWeight="Bold"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Tạm tính: " FontSize="15" FontWeight="Bold"/>
+                    <TextBlock x:Name="TempBillTextBlock" FontSize="15"/>
+                </StackPanel>
+                <TextBlock Text="Tổng tiền thanh toán: " FontSize="20" FontWeight="Bold"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock x:Name="TotalCartTextBox" FontSize="15"/>
+                    <Button>
+                        <materialDesign:Badged>
+                            
+                        </materialDesign:Badged>
+                    </Button>
+                </StackPanel>
             </StackPanel>
         </materialDesign:Card>
     </Grid>
