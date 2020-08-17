@@ -17,7 +17,7 @@
         </materialDesign:Card>
         <materialDesign:Card  Margin="5" VerticalAlignment="Stretch" Grid.Column="0">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
-                <DataGrid SelectionChanged="BillDTG_SelectionChanged"  Name="BillDTG" x:FieldModifier="public" AutoGenerateColumns="False" >
+                <DataGrid  Name="BillDTG" x:FieldModifier="public" AutoGenerateColumns="False" >
                     <DataGrid.Columns>
                         <DataGridTemplateColumn Width="auto">
                             <DataGridTemplateColumn.CellTemplate>
@@ -35,10 +35,10 @@
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBox Name="Quantity" Text="{Binding Quantity}" Width="40" VerticalAlignment="Center"/>
+                                        <TextBox x:Name="QuantityTB" Text="{Binding Quantity}" Width="40" VerticalAlignment="Center"/>
                                         <StackPanel Orientation="Vertical" Width="auto">
-                                                <materialDesign:PackIcon Kind="ArrowTop" MouseLeftButtonUp="PackIcon_MouseLeftButtonUp"/>
-                                                <materialDesign:PackIcon Kind="ArrowBottom" MouseLeftButtonUp="PackIcon_MouseLeftButtonUp_1"/>
+                                                <materialDesign:PackIcon Kind="ArrowTop" MouseLeftButtonUp="Up_MouseLeftButtonUp"/>
+                                                <materialDesign:PackIcon Kind="ArrowBottom" MouseLeftButtonUp="Down_MouseLeftButtonUp"/>
                                         </StackPanel>
                                     </StackPanel>
                                 </DataTemplate>
@@ -53,14 +53,11 @@
 
         <materialDesign:Card Grid.Column="1" Margin="5">
             <StackPanel>
-                <TextBlock Text="Total carts: " FontSize="20" FontWeight="Medium" Foreground="MidnightBlue"/>
+                <TextBlock Text="Total carts: " FontSize="20" FontWeight="Bold" Foreground="MidnightBlue"/>
+
+                <TextBlock Text="Tổng tiền thanh toán: " FontSize="20" FontWeight="Bold" Foreground="MidnightBlue"/>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Tạm tính: " FontSize="15" FontWeight="Medium" Foreground="MidnightBlue"/>
-                    <TextBlock x:Name="TempBillTextBlock" FontSize="15"/>
-                </StackPanel>
-                <TextBlock Text="Tổng tiền thanh toán: " FontSize="20" FontWeight="Medium" Foreground="MidnightBlue"/>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock x:Name="TotalCartTextBox" FontSize="15"/>
+                    <TextBlock x:Name="TotalCartTextBlock" VerticalAlignment="Center" Foreground="MidnightBlue" FontSize="20" FontWeight="Bold" Width="150" HorizontalAlignment="Center" />
                     <Button Background="LightPink" Click="TotalCarts_Click">
                         <StackPanel Orientation="Horizontal" >
                             <TextBlock Text="Done" Foreground="MidnightBlue"/>

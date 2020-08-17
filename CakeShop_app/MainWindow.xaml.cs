@@ -52,6 +52,25 @@ namespace CakeShop_app
             screen.Handler += Categories;
             GridMain.Children.Add(screen);
         }
+        private void BillDone(int flags)
+        {
+            if(flags == 1)
+            {
+                CakeShop_dbEntities db = new CakeShop_dbEntities();
+                Bill bill = new Bill();
+                bill.Date = DateTime.Now;
+                bill.Payed = false;
+                InitializeComponent();
+                db.Bills.Add(bill);
+                db.SaveChanges();
+
+                GridMain.Children.Clear();
+                TitleFunction.Text = "Trang chủ";
+                var screen = new UserControlTypes();
+                screen.Handler += Categories;
+                GridMain.Children.Add(screen);
+            }    
+        }
         private void btn_Aboutme(object sender, RoutedEventArgs e)
         {
 
@@ -112,7 +131,10 @@ namespace CakeShop_app
             
             TitleFunction.Text = "Thanh toán";
             var data = db.Bills.ToList();
-            GridMain.Children.Add( new UserControlCreateCakeBill(GridMain,data[data.Count-1]));
+            var screen = new UserControlCreateCakeBill(GridMain, data[data.Count - 1]);
+            screen.Handler += BillDone;
+            GridMain.Children.Add( screen);
+
         }
         private void Categories(int CatID)
         {
