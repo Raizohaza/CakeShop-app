@@ -44,7 +44,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0" x:Name="GridMenu" Width="70" HorizontalAlignment="Left" Background="Orange">
+        <Grid Grid.Column="0" x:Name="GridMenu" Width="70" HorizontalAlignment="Left" Background="#beccc0">
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="2" ShadowDepth="1" Color="#FFAEAEAE"/>
             </Grid.Effect>
@@ -58,7 +58,7 @@
                             <TranslateTransform/>
                         </TransformGroup>
                     </Grid.RenderTransform>
-                    <Button x:Name="ButtonOpenMenu" Height="60" Width="60" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="btn_ButtonOpenMenu">
+                    <Button x:Name="ButtonOpenMenu" Height="60" Width="60" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="#ffffff" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="btn_ButtonOpenMenu">
                         <materialDesign:PackIcon Kind="Menu" Width="25" Height="25"/>
                     </Button>
                     <Button x:Name="ButtonCloseMenu" Visibility="Collapsed" Height="60" Width="60" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="btn_ButtonCloseMenu">
@@ -100,9 +100,17 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Height="70" VerticalAlignment="Top" Background="Orange">
-                <TextBlock x:Name="TitleFunction" Text="Cake Shop App" HorizontalAlignment="Center"
-                        VerticalAlignment="Center" FontSize="30"/>
+            <Grid Grid.Row="0" Height="70" VerticalAlignment="Top" Background="#beccc0">
+                <TextBlock x:Name="TitleFunction" Text="TCH's Shop" HorizontalAlignment="Center"
+                        VerticalAlignment="Center" FontSize="50" FontWeight="Medium">
+                    <TextBlock.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#000000" Offset="0"/>
+                            <GradientStop Color="#ffffff" Offset="1"/>
+                            
+                        </LinearGradientBrush>
+                    </TextBlock.Foreground>
+                </TextBlock>
                 <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
                     <ListView x:Name="Cart_Click" MouseLeftButtonUp="Cart_Click_MouseLeftButtonUp">
                         <ListViewItem>

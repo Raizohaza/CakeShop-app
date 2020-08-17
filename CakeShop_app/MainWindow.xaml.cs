@@ -86,7 +86,7 @@ namespace CakeShop_app
         }
         private void btn_Exit(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         private void ListViewMenu_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)

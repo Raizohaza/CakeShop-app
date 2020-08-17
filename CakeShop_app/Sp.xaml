@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CakeShop_app"
         mc:Ignorable="d"
-        Height="450" Width="550" Loaded="Window_Loaded">
-    <Border Background="White" BorderThickness="0">
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Height="450" Width="550" >
+    <Border Background="White" BorderThickness="0" Loaded="Border_Loaded">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="3*"/>
@@ -14,10 +15,48 @@
             </Grid.RowDefinitions>
             <CheckBox x:Name="CheckBox" Content="Do not show this again!!!" FontWeight="Medium" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Margin="199,70,172,10" Grid.Row="1" />
             <Border BorderThickness="0">
-                <Image Source="{Binding }" Margin="134,9,113,187"/>
+                <Image x:Name="_CakeAva" Source="{Binding }" Margin="10,70,262,86"/>
             </Border>
-            <TextBlock x:Name="CakeName" Text="{Binding}" FontSize="18" FontWeight="Medium" Grid.Row="0" Margin="134,159,114,137"/>
-            <TextBlock x:Name="CakeDetail" Text="{Binding}" FontSize="14" Grid.Row="0" Margin="74,204,59,10"/>
+            <TextBlock x:Name="_CakeName" HorizontalAlignment="Center" Text="{Binding}" FontSize="18" FontWeight="Medium" Grid.Row="0" Margin="10,275,237,10">
+                <TextBlock.Foreground>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#f51a02" Offset="0"/>
+                        <GradientStop Color="#ff00d0" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBox Text="Welcom to TCH's Shop" Foreground="#ff7c6e" FontSize="35" FontWeight="Medium" Background="Transparent"
+         BorderBrush="Transparent"
+         BorderThickness="0"
+         TextWrapping="Wrap" Margin="95,-2,42,254">
+                <TextBox.Effect>
+                    <DropShadowEffect ShadowDepth="4"
+                          Direction="330"
+                          Color="Black"
+                          Opacity="0.5"
+                          BlurRadius="4"
+                           />
+                </TextBox.Effect>
+                <TextBox.FocusVisualStyle>
+                    <Style>
+                        <Setter Property="Control.Template">
+                            <Setter.Value>
+                                <ControlTemplate/>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TextBox.FocusVisualStyle>
+                
+            </TextBox>
+
+            <TextBlock x:Name="_CakeDetail" TextWrapping="Wrap"  Text="{Binding}" FontSize="14" Grid.Row="0" Margin="305,110,10,30">
+                <TextBlock.Foreground>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#000000" Offset="0"/>
+                        <GradientStop Color="#ffffff" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBlock.Foreground>
+            </TextBlock>
             <Button x:Name="Next_button" Content="Start!!!" Background="OrangeRed" FontWeight="Medium" Click="Next_button_Click" Grid.Row="1" Margin="244,10,214,58"/>
         </Grid>
 
