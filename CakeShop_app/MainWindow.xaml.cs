@@ -21,10 +21,12 @@ namespace CakeShop_app
     public partial class MainWindow : Window
     {
         
-        CakeShop_dbEntities db = new CakeShop_dbEntities();
         public MainWindow()
         {
+            CakeShop_dbEntities db = new CakeShop_dbEntities();
             Bill bill = new Bill();
+            bill.Date = DateTime.Now;
+            bill.Payed = false;
             InitializeComponent();
             db.Bills.Add(bill);
             db.SaveChanges();
@@ -100,6 +102,7 @@ namespace CakeShop_app
 
         private void Cart_Click_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            CakeShop_dbEntities db = new CakeShop_dbEntities();
             GridMain.Children.Clear();
             
             TitleFunction.Text = "Thanh toán";
@@ -116,8 +119,21 @@ namespace CakeShop_app
             GridMain.Children.Add(usc);
         }
 
+        //Xoa cac bill chua thanh toan
         private void Window_Closed(object sender, EventArgs e)
         {
+            CakeShop_dbEntities db = new CakeShop_dbEntities();
+            
+            var bd = db.BillDetails.ToList();
+            foreach (var item in bd)
+            {
+                if (item.Bill.Payed == false)
+                {
+                    db.BillDetails.Remove(item);
+                    db.SaveChanges();
+                }
+            }
+
             var d = db.Bills.ToList();
             foreach (var item in d)
             {

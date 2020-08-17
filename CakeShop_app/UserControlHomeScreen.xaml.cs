@@ -90,7 +90,6 @@ namespace CakeShop_app
                 Bill_item.IDBill = currentBill.ID;
                 Bill_item.Bill = currentBill;
                 bills[bills.Count - 1].BillDetails.Add(Bill_item);
-                db.SaveChanges();
             }
             db.SaveChanges();
         }
