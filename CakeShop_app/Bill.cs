@@ -23,7 +23,7 @@ namespace CakeShop_app
         public int ID { get; set; }
         public Nullable<int> Totality { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
-        public Nullable<bool> Payed { get; set; } = false;
+        public Nullable<bool> Payed { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BillDetail> BillDetails { get; set; }

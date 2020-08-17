@@ -22,7 +22,7 @@
           <Property Name="CakeID" Type="int" Nullable="false" />
           <Property Name="Quantity" Type="int" />
           <Property Name="Totality" Type="int" />
-          <Property Name="IDBill" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDBill" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Cake">
           <Key>
@@ -120,7 +120,7 @@
           <Property Name="CakeID" Type="Int32" Nullable="false" />
           <Property Name="Quantity" Type="Int32" />
           <Property Name="Totality" Type="Int32" />
-          <Property Name="IDBill" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDBill" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Bill" Relationship="Self.FK_BillDetail_Bill" FromRole="BillDetail" ToRole="Bill" />
           <NavigationProperty Name="Cake" Relationship="Self.FK_Bill_Cake" FromRole="BillDetail" ToRole="Cake" />
         </EntityType>

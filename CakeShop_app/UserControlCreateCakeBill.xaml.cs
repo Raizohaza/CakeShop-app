@@ -23,11 +23,11 @@ namespace CakeShop_app
     {
         Grid main;
         List<BillDetail> Billes;
-        public UserControlCreateCakeBill(Grid grid,List<BillDetail> bills)
+        public UserControlCreateCakeBill(Grid grid,Bill bills)
         {
             InitializeComponent();
             main = grid;
-            Billes = bills;
+            Billes = bills.BillDetails as List<BillDetail>;
             //Load();
         }
         

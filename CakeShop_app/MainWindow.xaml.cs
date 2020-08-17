@@ -86,13 +86,13 @@ namespace CakeShop_app
                     usc = new UserControlHomeScreen();
                     GridMain.Children.Add(usc);
                     break;
-                case "ItemBill":
-                    CakeShop_dbEntities db = new CakeShop_dbEntities();
-                    TitleFunction.Text = "Thanh toán";
-                    var data = db.BillDetails.ToList();
-                    usc = new UserControlCreateCakeBill(GridMain,data);
-                    GridMain.Children.Add(usc);
-                    break;
+                //case "ItemBill":
+                //    CakeShop_dbEntities db = new CakeShop_dbEntities();
+                //    TitleFunction.Text = "Thanh toán";
+                //    var data = db.BillDetails.ToList();
+                //    usc = new UserControlCreateCakeBill(GridMain,data);
+                //    GridMain.Children.Add(usc);
+                //    break;
                 default:
                     break;
             }
@@ -103,8 +103,8 @@ namespace CakeShop_app
             GridMain.Children.Clear();
             
             TitleFunction.Text = "Thanh toán";
-            var data = db.BillDetails.ToList();
-            GridMain.Children.Add( new UserControlCreateCakeBill(GridMain,data));
+            var data = db.Bills.ToList();
+            GridMain.Children.Add( new UserControlCreateCakeBill(GridMain,data[data.Count-1]));
         }
         private void Categories(int CatID)
         {

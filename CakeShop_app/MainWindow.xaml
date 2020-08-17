@@ -79,12 +79,12 @@
                             <TextBlock Text="Sản phẩm" VerticalAlignment="Center"  Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem x:Name="ItemBill" Height="auto" RenderTransformOrigin="0.473,-1.041">
+                    <!--<ListViewItem x:Name="ItemBill" Height="auto" RenderTransformOrigin="0.473,-1.041">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="FileDocument" Height="25" Width="25" Margin="10"/>
                             <TextBlock Text="Thanh toán" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
-                    </ListViewItem>
+                    </ListViewItem>-->
                     <ListViewItem x:Name="ItemStatistical" Height="auto">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="ChartLine" Height="25" Width="25" Margin="10"/>

@@ -72,8 +72,12 @@ namespace CakeShop_app
         
         private void Bill_Status(BillDetail Bill_item)
         {
+            var bills = db.Bills.ToList();
+
+            var currentBill = bills[bills.Count-1];
+
             var Dup_bill = from bill in db.BillDetails
-                        where bill.CakeID == Bill_item.CakeID
+                        where bill.CakeID == Bill_item.CakeID && bill.IDBill == currentBill.ID
                         select bill;
             var kt = Dup_bill.ToList();
             if (kt.Count > 0)
@@ -83,7 +87,10 @@ namespace CakeShop_app
             }
             else
             {
-                db.BillDetails.Add(Bill_item);
+                Bill_item.IDBill = currentBill.ID;
+                Bill_item.Bill = currentBill;
+                bills[bills.Count - 1].BillDetails.Add(Bill_item);
+                db.SaveChanges();
             }
             db.SaveChanges();
         }
