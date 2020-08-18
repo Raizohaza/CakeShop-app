@@ -1,76 +1,166 @@
-﻿Create database [CakeShop_db]
-go
+﻿CREATE DATABASE [CakeShop_db]
+GO
 USE [CakeShop_db]
 GO
-/****** Object:  Table [dbo].[Bill]    Script Date: 13/8/2020 2:47:39 PM ******/
+/****** Object:  Table [dbo].[Bill]    Script Date: 17/8/2020 11:37:10 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Bill](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[CakeID] [int] NULL,
-	[Quantity] [int] NULL,
 	[Totality] [int] NULL,
+	[Date] [datetime] NULL,
+	[Payed] [bit] NULL,
  CONSTRAINT [PK_Bill] PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Cake]    Script Date: 13/8/2020 2:47:39 PM ******/
+/****** Object:  Table [dbo].[BillDetail]    Script Date: 17/8/2020 11:37:10 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[BillDetail](
+	[CakeID] [int] NOT NULL,
+	[Quantity] [int] NULL,
+	[Totality] [int] NULL,
+	[IDBill] [int] NOT NULL,
+ CONSTRAINT [PK_BillDetail] PRIMARY KEY CLUSTERED 
+(
+	[CakeID] ASC,
+	[IDBill] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Cake]    Script Date: 17/8/2020 11:37:10 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Cake](
-	[ID] [int] NOT NULL,
+	[ID] [int] IDENTITY(1,1) NOT NULL,
 	[Name] [ntext] NULL,
 	[Price] [int] NULL,
 	[Image] [ntext] NULL,
 	[CatID] [int] NULL,
+	[Detail] [ntext] NULL,
  CONSTRAINT [PK_Cake] PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Category]    Script Date: 13/8/2020 2:47:39 PM ******/
+/****** Object:  Table [dbo].[Category]    Script Date: 17/8/2020 11:37:10 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Category](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[Name] [ntext] NULL,
+	[CatName] [ntext] NULL,
+	[CatImage] [ntext] NULL,
  CONSTRAINT [PK_Category] PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID]) VALUES (1, N'Bánh kem', 20000, N'banhkem.jpg', 2)
+SET IDENTITY_INSERT [dbo].[Cake] ON 
 GO
-INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID]) VALUES (2, N'Bánh ú', 12000, N'banhu.jpg', 3)
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID], [Detail]) VALUES (1, N'Bánh kem Boston Chocolate', 350000, N'Banhkem1.jpg', 1, N'Bánh Boston Chocolate Fresh Garden có cốt bánh socola 3 lớp nhân kem socola, mặt bánh phủ socola, trang trí macaron và socola bi')
 GO
-INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID]) VALUES (3, N'Bánh xèo', 20000, N'banhxeo.jpg', 1)
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID], [Detail]) VALUES (2, N'Bánh kem Pink Lady', 300000, N'Banhkem2.jpg', 1, N'Bánh Pink lady Fresh Garden có cốt bánh vani nhân kem vani, trang trí bánh macaron và hoa hồng khô')
 GO
-INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID]) VALUES (4, N'Bánh đúc', 6000, N'banhduc.jpg', 3)
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID], [Detail]) VALUES (3, N'Bánh kem Red Velvet', 300000, N'Banhkem3.jpg', 1, N'Chúng ta dễ dàng tìm thấy một công thức làm bánh Red Velvet ở bất kỳ đâu, nhưng nguyên liệu và tỷ lệ pha trộn nguyên liệu mới chính là yếu tố tiên quyết định danh một chiếc bánh hoàn hảo. Tại Fresh Garden, Red Velvet thực sự khác biệt bởi công thức riêng, rất cầu kỳ, tinh tế, được sáng tạo bằng đam mê của đầu bếp Nhật Bản Tsujimori Takehide.')
+GO
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID], [Detail]) VALUES (4, N'Bánh kem Cream & Vanilla', 250000, N'Banhkem4.jpg', 1, N'Bánh kem Cream & Vanilla Fresh Garden với sự đặc trưng từ kem lớp vani hòa trộn cùng cốt vani 4 lớp đặc trưng, trang trí thêm những lát hoa văn socola đẹp mắt tạo thêm những điểm chấm phá cho chiếc bánh thêm phần thu hút.')
+GO
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID], [Detail]) VALUES (5, N'Bánh kem Sweet Autumn', 300000, N'Banhkem5.jpg', 1, N'Bánh Sweet Autumn Fresh Garden có cốt bánh vị sữa, mặt bánh phủ socola sệt, trang trí bánh macaron và socola bi')
+GO
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID], [Detail]) VALUES (6, N'Bánh kem Flower Fruit', 250000, N'Banhkem6.jpg', 1, N'Bánh Flower Fruit Fresh Garden với cốt bánh vani 4 lớp cùng lớp mứt táo, trang trí thêm những bông hoa lily đẹp mắt cho buổi tiệc thêm hoàn hảo hơn')
+GO
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID], [Detail]) VALUES (7, N'Bánh kem Caramel Jerry', 400000, N'Banhkem7.jpg', 1, N'Bánh kem Caramel Jelly Fresh Garden cốt bánh vani 4 lớp, nhân thạch caramel, mặt bánh phủ socola trắng và bánh macaron')
+GO
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID], [Detail]) VALUES (8, N'SANDWICH GIĂM BÔNG PHOMAI', 30000, N'Banhmituoi1.jpg', 2, N'Sandwich giăm bông phô mai thơm lừng vị phomai, cùng với miếng giăm bông đầy hấp dẫn.')
+GO
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID], [Detail]) VALUES (9, N'SANDWICH CÁ NGỪ PHOMAI', 30000, N'Banhmituoi2.jpg', 2, N'SANDWICH CÁ NGỪ PHOMAI')
+GO
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID], [Detail]) VALUES (10, N'SANDWICH GIĂM BÔNG', 25000, N'Banhmituoi3.jpg', 2, N'Sandwich giăm bông được làm từ bột mì của bánh gối và được kết hợp giữa giăm bông, xà lách và cà chua cùng với sốt mayonnaise. Các nguyên liệu hòa quyện làm một tạo thành chiếc sandwich thơm ngon và béo ngậy')
+GO
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID], [Detail]) VALUES (11, N'PIZZA GIĂM BÔNG NẤM', 30000, N'Banhmituoi4.jpg', 2, N'Bánh pizza giăm bông nấm với những nguyên liệu từ nấm tươi ngon và hấp dẫn đối với những tín đồ sành ăn')
+GO
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID], [Detail]) VALUES (12, N'PIZZA XÚC XÍCH NGÔ', 30000, N'Banhmituoi5.jpg', 2, N'Bánh pizza làm từ bột mì cao cấp, nhân bánh pizza được làm từ xúc xích ngô với gia vị đặc trưng của Fresh Garden')
+GO
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID], [Detail]) VALUES (13, N'BÁNH TƯƠI XÚC XÍCH PHOMAI', 25000, N'Banhmituoi6.jpg', 2, N'Bánh tươi sử dụng nguyên liệu cao cấp. Chiếc bánh hình tam giác được kẹp xúc xích hòa quyện lớp phomai tươi')
+GO
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID], [Detail]) VALUES (14, N'BÁNH TƯƠI DỪA', 25000, N'Banhmituoi7.jpg', 2, N'Bánh tươi sử dụng nguyên liệu cao cấp. Mặt bánh hinh trái tim với lớp nhân bơ hòa quyện cùng dừa tươi sấy.')
+GO
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID], [Detail]) VALUES (15, N'BÁNH DONUT DÂU', 10000, N'Banhmingot1.jpg', 3, N'Bánh donut sẽ được những người thợ tỉ mỉ tạo hình bánh tròn nhỏ, nướng giòn, sau đó phủ thêm một lớp socola cho những ai yêu thích hương vị ngọt')
+GO
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID], [Detail]) VALUES (16, N'BÁNH DONUT SOCOLA', 10000, N'Banhmingot2.jpg', 3, N'Bánh donut sẽ được những người thợ tỉ mỉ tạo hình bánh tròn nhỏ, nướng giòn, sau đó phủ thêm một lớp socola cho những ai yêu thích hương vị ngọt')
+GO
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID], [Detail]) VALUES (17, N'BÁNH SỪNG BÒ MINI', 45000, N'Banhmingot3.jpg', 3, N'Bánh sừng bò được xếp thành ngàn lớp, cuộn lại với nhau thành hình chiếc sừng bò ngộ nghĩnh. Mặt bánh phủ lớp vừng thêm phần thu hút.')
+GO
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID], [Detail]) VALUES (18, N'BÁNH SỪNG BÒ CROISSANT', 15000, N'Banhmingot4.jpg', 3, N'Bánh sừng bò được xếp thành ngàn lớp, cuộn lại với nhau thành hình chiếc sừng bò ngộ nghĩnh.')
+GO
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID], [Detail]) VALUES (19, N'BÁNH CÀ PHÊ NHÂN NHO ĐEN', 15000, N'Banhmingot5.jpg', 3, N'Bánh cà phê nhân nho đen là sản phẩm đặc trưng theo phong cách của Mexico. Vỏ bánh mềm mịn, nhân bánh hương vị cà phê và nho đen giòn, ngọt')
+GO
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID], [Detail]) VALUES (20, N'BÁNH CÀ PHÊ NHÂN ĐẬU ĐỎ', 15000, N'Banhmingot6.jpg', 3, N'Bánh cà phê nhân đậu đỏ là sản phẩm đặc trưng theo phong cách của Mexico. Vỏ bánh mềm mịn, nhân bánh hương vịdậu đỏ và nho đen giòn, ngọt.')
+GO
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID], [Detail]) VALUES (21, N'BÁNH MIẾNG OPERA', 35000, N'Banhtrangmieng1.jpg', 4, N'Bánh miếng Opera thuộc dòng bánh Tiramisu, bánh là sự hòa quyện giữa các hương vị hoàn hảo tạo nên miếng chiếc mềm, mịn và ngọt ngào.')
+GO
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID], [Detail]) VALUES (22, N'BÁNH MIẾNG TIRAMISU', 35000, N'Banhtrangmieng2.jpg', 4, N'Bánh miếng Tiramisu,thuộc dòng bánh lạnh được mọi người ưa chuộng. Với lớp bánh mềm, mịn hương vị hòa quyện cùng lớp kem béo ngậy.')
+GO
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID], [Detail]) VALUES (23, N'MOUSSE CHANH LEO', 30000, N'Banhtrangmieng3.jpg', 4, N'Mousse chanh leo dòng bánh đặc trưng cho hương vị mùa hè,bánh mềm mịn, mát lạnh và sự tan chảy của lớp kem hòa quyện lớp chanh leo trong miệng ngay lần đầu thưởng thức')
+GO
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID], [Detail]) VALUES (24, N'TIRAMISU', 30000, N'Banhtrangmieng4.jpg', 4, N'Tiramisu được phủ lên vị phomai kem béo ngậy, thêm vào đó là lớp bột cacao chất lượng tạo nên sự mềm mịn, mát lạnh tuyệt vời cho bánh.')
+GO
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID], [Detail]) VALUES (25, N'MOUSSE XOÀI', 30000, N'Banhtrangmieng5.jpg', 4, N'Mousse xoài là dòng bánh đặc trưng cho hương vị mùa hè,bánh mềm mịn, mát lạnh và sự tan chảy của lớp kem hòa quyện lớp xoài trong miệng ngay lần đầu thưởng thức')
+GO
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID], [Detail]) VALUES (26, N'PANNA COTTA', 30000, N'Banhtrangmieng6.jpg', 4, N'Panna Cotta là món tráng miệng hấp dẫn với hương vị chua ngọt, thích hợp là món tráng miệng cho ngày cuối tuần')
+GO
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID], [Detail]) VALUES (27, N'BÁNH CHEESE CAKE', 30000, N'Banhgato1.jpg', 5, N'Bánh Cheese Cake: Lấy nguồn cảm hứng từ xứ sở hoa Anh Đào, chiếc bánh thơm mùi phô mai nhưng không quá béo ngậy, phù hợp với khẩu vị của người Việt.')
+GO
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID], [Detail]) VALUES (28, N'BÁNH BUTTER CAKE', 30000, N'Banhgato2.jpg', 5, N'Bánh Butter Cake là loại bánh cổ điển phổ biến tại Mỹ, với sự cải tiến của đầu bếp Nhật, bạn sẽ được trải nghiệm hương vị hài hòa trong từng miếng bánh. Kết cấu bánh mềm ẩm, xốp nhẹ mịn, dễ ăn là lựa chọn lý tưởng cho các bữa ăn nhẹ của bạn.')
+GO
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID], [Detail]) VALUES (29, N'BÁNH CUỘN KEM TƯƠI TRÀ XANH', 30000, N'Banhgato3.jpg', 5, N'Bánh cuộn kem tươi: Món ăn nhẹ phổ biến và ưa thích của mỗi gia đình người Nhật, nhân kem tươi béo ngậy cùng lớp bông lan mềm mịn sẽ khác hẳn với các loại nhân kem thông thường. Fresh Garden có hai phiên bản: Bánh cuộn vani và trà xanh cho bạn lựa chọn.')
+GO
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID], [Detail]) VALUES (30, N'BÁNH CUỘN DÂU', 20000, N'Banhgato4.jpg', 5, N'Bánh cuộn dâu miếng mềm mịn, xốp, xếp cuộn tròn với nhau thành hình xoắn ốc pha trộn một lớp mứt dâu ngọt ngào.')
+GO
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID], [Detail]) VALUES (31, N'BÁNH CUỘN NHO MIẾNG', 20000, N'Banhgato5.jpg', 5, N'Bánh cuộn nho miếng mềm mịn, xốp, xếp cuộn tròn với nhau thành hình xoắn ốc, mặt bánh được phủ một lớp kem sữa, và những trái nho khô')
+GO
+INSERT [dbo].[Cake] ([ID], [Name], [Price], [Image], [CatID], [Detail]) VALUES (32, N'BÁNH CUỘN SOCOLA MIẾNG', 20000, N'Banhgato6.jpg', 5, N'Bánh cuộn socola miếng được xếp cuộn lại với nhau thành hình xoắn ốc, mỗi lớp cuộn, bánh lại phủ lên một lớp kem sữa. Với hương vị socola hòa quyện cùng lớp kem tươi hảo hạn')
+GO
+SET IDENTITY_INSERT [dbo].[Cake] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Category] ON 
 GO
-INSERT [dbo].[Category] ([ID], [Name]) VALUES (1, N'Bánh')
+INSERT [dbo].[Category] ([ID], [CatName], [CatImage]) VALUES (1, N'Bánh kem', NULL)
 GO
-INSERT [dbo].[Category] ([ID], [Name]) VALUES (2, N'Kem')
+INSERT [dbo].[Category] ([ID], [CatName], [CatImage]) VALUES (2, N'Bánh mì tươi', NULL)
 GO
-INSERT [dbo].[Category] ([ID], [Name]) VALUES (3, N'Gói lá')
+INSERT [dbo].[Category] ([ID], [CatName], [CatImage]) VALUES (3, N'Bánh mì ngọt', NULL)
+GO
+INSERT [dbo].[Category] ([ID], [CatName], [CatImage]) VALUES (4, N'Bánh tráng miệng', NULL)
+GO
+INSERT [dbo].[Category] ([ID], [CatName], [CatImage]) VALUES (5, N'Bánh Gato', NULL)
 GO
 SET IDENTITY_INSERT [dbo].[Category] OFF
 GO
-ALTER TABLE [dbo].[Bill]  WITH CHECK ADD  CONSTRAINT [FK_Bill_Cake] FOREIGN KEY([ID])
+ALTER TABLE [dbo].[Bill] ADD  CONSTRAINT [DF_Bill_Payed]  DEFAULT ((0)) FOR [Payed]
+GO
+ALTER TABLE [dbo].[BillDetail]  WITH CHECK ADD  CONSTRAINT [FK_Bill_Cake] FOREIGN KEY([CakeID])
 REFERENCES [dbo].[Cake] ([ID])
 GO
-ALTER TABLE [dbo].[Bill] CHECK CONSTRAINT [FK_Bill_Cake]
+ALTER TABLE [dbo].[BillDetail] CHECK CONSTRAINT [FK_Bill_Cake]
+GO
+ALTER TABLE [dbo].[BillDetail]  WITH CHECK ADD  CONSTRAINT [FK_BillDetail_Bill] FOREIGN KEY([IDBill])
+REFERENCES [dbo].[Bill] ([ID])
+GO
+ALTER TABLE [dbo].[BillDetail] CHECK CONSTRAINT [FK_BillDetail_Bill]
 GO
 ALTER TABLE [dbo].[Cake]  WITH CHECK ADD  CONSTRAINT [FK_Cake_Category] FOREIGN KEY([CatID])
 REFERENCES [dbo].[Category] ([ID])
