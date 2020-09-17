@@ -29,8 +29,7 @@ namespace CakeShop_app
             main = grid;
             Billes = bills.BillDetails.ToList() as List<BillDetail>;
 
-            var date = bills.Date.ToString().Split('/');
-            var MM = Int32.Parse(date[1]);
+            
         }
         
         public UserControlCreateCakeBill(List<BillDetail> data)

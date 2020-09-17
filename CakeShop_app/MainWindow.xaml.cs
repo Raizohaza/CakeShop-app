@@ -95,6 +95,11 @@ namespace CakeShop_app
                 //    usc = new UserControlCreateCakeBill(GridMain,data);
                 //    GridMain.Children.Add(usc);
                 //    break;
+                case "ItemStatistical":
+                    TitleFunction.Text = "Thống kê";
+                    usc = new UserControlCharts();
+                    GridMain.Children.Add(usc);
+                    break;
                 default:
                     break;
             }
